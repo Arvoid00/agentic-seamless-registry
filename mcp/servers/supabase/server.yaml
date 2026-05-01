@@ -22,7 +22,7 @@ server:
   command: npx
   args:
     - -y
-    - "@supabase/mcp-server-supabase@latest"
+    - "@supabase/mcp-server-supabase@0.8.0"
 env:
   required:
     - SUPABASE_ACCESS_TOKEN

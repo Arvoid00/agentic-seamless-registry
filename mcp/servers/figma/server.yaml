@@ -22,7 +22,7 @@ server:
   command: npx
   args:
     - -y
-    - figma-developer-mcp
+    - figma-developer-mcp@0.11.0
     - --stdio
 env:
   required:

@@ -1,0 +1,52 @@
+id: agent.research-docs-curator
+kind: agent-package
+name: Research Docs Curator
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: agent-packages/research-docs-curator/object.yaml
+description: Runs source-grounded research, synthesizes findings, and updates docs/checklists without over-searching or prompt drift.
+tags:
+  - agent-package
+  - research
+  - docs
+capabilities:
+  - research-planning
+  - source-synthesis
+  - docs-drift
+  - checklist-authoring
+metadata:
+  composition:
+    skills:
+      - global.research-prompts
+      - global.documentation-updates-drift
+      - global.code-guidelines
+      - global.copy-writer
+    mcp_profile: profile.cursor-default
+    mcp_servers:
+      - mcp.context7
+    cli_invocations:
+      - gh repo view <repo>
+      - gh issue list
+      - gh pr list
+  usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - global.research-prompts
+    - global.documentation-updates-drift
+    - global.code-guidelines
+    - global.copy-writer
+  tools:
+    - cli.github
+entrypoints:
+  prompt: agent-packages/research-docs-curator/object.yaml
+risk:
+  level: low
+  reasons:
+    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+  requires_human_review: false

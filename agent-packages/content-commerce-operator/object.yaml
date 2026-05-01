@@ -1,0 +1,65 @@
+id: agent.content-commerce-operator
+kind: agent-package
+name: Content Commerce Operator
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: agent-packages/content-commerce-operator/object.yaml
+description: Builds content, commerce, email, and CMS workflows using Sanity, Stripe, Resend, and React Email patterns.
+tags:
+  - agent-package
+  - content
+  - commerce
+  - email
+capabilities:
+  - cms-workflows
+  - billing-integration
+  - transactional-email
+  - editor-manuals
+metadata:
+  composition:
+    skills:
+      - global.sanity
+      - global.stripe
+      - global.resend
+      - global.react-email-creation
+      - app-specific.create-sanity-cms-manuals
+      - global.copy-writer
+    mcp_profile: profile.cursor-default
+    mcp_servers:
+      - mcp.context7
+      - mcp.figma
+    cli_invocations:
+      - npx sanity schema validate
+      - stripe listen --forward-to http://localhost:3000/api/stripe/webhook
+      - resend emails send --help
+  usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - global.sanity
+    - global.stripe
+    - global.resend
+    - global.react-email-creation
+    - app-specific.create-sanity-cms-manuals
+    - global.copy-writer
+  tools:
+    - cli.sanity
+    - cli.github
+    - cli.turbo
+  env:
+    - SANITY_AUTH_TOKEN
+    - STRIPE_SECRET_KEY
+    - STRIPE_WEBHOOK_SECRET
+    - RESEND_API_KEY
+entrypoints:
+  prompt: agent-packages/content-commerce-operator/object.yaml
+risk:
+  level: high
+  reasons:
+    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+  requires_human_review: true

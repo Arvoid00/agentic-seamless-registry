@@ -15,12 +15,14 @@ except json.JSONDecodeError:
 
 command = payload.get("command") or payload.get("tool_input", {}).get("command") or ""
 deny_patterns = [
-    r"\brm\s+-rf\s+/(?:\s|$)",
+    r"\brm\s+-[A-Za-z]*r[A-Za-z]*f[A-Za-z]*\s+(?:/|~)",
     r"\bgit\s+reset\s+--hard\b",
     r"\bgit\s+push\b.*\s--force(?:\s|$)",
     r"\bchmod\s+-R\s+777\b",
 ]
 ask_patterns = [
+    r"\brm\s+-[A-Za-z]*r[A-Za-z]*f[A-Za-z]*\b",
+    r"\bgit\s+push\b.*\s--force-with-lease(?:\s|$)",
     r"\bpnpm\s+db:migrate\b",
     r"\bsupabase\s+db\s+reset\b",
     r"\bvercel\b.*\s--prod(?:\s|$)",

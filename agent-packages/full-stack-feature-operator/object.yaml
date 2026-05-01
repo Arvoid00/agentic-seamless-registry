@@ -1,0 +1,61 @@
+id: agent.full-stack-feature-operator
+kind: agent-package
+name: Full Stack Feature Operator
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: agent-packages/full-stack-feature-operator/object.yaml
+description: Scopes, implements, validates, documents, and prepares product features across app, database, and release surfaces.
+tags:
+  - agent-package
+  - feature
+  - full-stack
+capabilities:
+  - feature-scoping
+  - implementation
+  - validation
+  - docs-drift-review
+metadata:
+  composition:
+    skills:
+      - global.feature-builder
+      - global.code-guidelines
+      - global.documentation-updates-drift
+      - global.migration-handling
+      - global.create-deployment-checklist
+      - imported.next-best-practices
+    mcp_profile: profile.cursor-default
+    mcp_servers:
+      - mcp.context7
+      - mcp.supabase
+    cli_invocations:
+      - turbo run typecheck --filter=<workspace>
+      - gh pr checks --watch --required
+      - supabase db reset
+  usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - global.feature-builder
+    - global.code-guidelines
+    - global.documentation-updates-drift
+    - global.migration-handling
+    - global.create-deployment-checklist
+    - imported.next-best-practices
+  tools:
+    - cli.turbo
+    - cli.github
+    - cli.supabase
+  env:
+    - SUPABASE_ACCESS_TOKEN
+entrypoints:
+  prompt: agent-packages/full-stack-feature-operator/object.yaml
+risk:
+  level: medium
+  reasons:
+    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+  requires_human_review: true

@@ -1,0 +1,56 @@
+id: agent.data-platform-operator
+kind: agent-package
+name: Data Platform Operator
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: agent-packages/data-platform-operator/object.yaml
+description: Implements and reviews Databricks-backed data jobs, SQL warehouse integrations, and app data workflows.
+tags:
+  - agent-package
+  - data
+  - databricks
+capabilities:
+  - databricks-jobs
+  - sql-warehouse-validation
+  - data-workflow-review
+metadata:
+  composition:
+    skills:
+      - app-specific.databricks
+      - global.migration-handling
+      - global.code-guidelines
+      - global.create-deployment-checklist
+    mcp_profile: profile.cursor-default
+    mcp_servers:
+      - mcp.context7
+    cli_invocations:
+      - databricks auth login --host <workspace>
+      - databricks warehouses list
+      - databricks jobs run-now <job-id>
+  usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - app-specific.databricks
+    - global.migration-handling
+    - global.code-guidelines
+    - global.create-deployment-checklist
+  tools:
+    - cli.github
+    - cli.turbo
+  env:
+    - DATABRICKS_HOST
+    - DATABRICKS_CLIENT_ID
+    - DATABRICKS_CLIENT_SECRET
+entrypoints:
+  prompt: agent-packages/data-platform-operator/object.yaml
+risk:
+  level: high
+  reasons:
+    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+  requires_human_review: true

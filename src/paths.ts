@@ -4,6 +4,9 @@ import type { NormalizedRegistryObject } from "./types.js";
 function safeSegment(value: string): string {
   return value
     .replace(/^mcp\./, "")
+    .replace(/^profile\./, "")
+    .replace(/^cli\./, "")
+    .replace(/^agent\./, "")
     .replace(/^global\./, "")
     .replace(/^app-specific\./, "")
     .replace(/[^a-zA-Z0-9._-]+/g, "-")

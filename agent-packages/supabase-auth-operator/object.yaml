@@ -1,0 +1,62 @@
+id: agent.supabase-auth-operator
+kind: agent-package
+name: Supabase Auth Operator
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: agent-packages/supabase-auth-operator/object.yaml
+description: Handles Supabase local setup, auth templates, Google OAuth, migrations, and auth-related deployment readiness.
+tags:
+  - agent-package
+  - supabase
+  - auth
+capabilities:
+  - supabase-local-dev
+  - auth-oauth
+  - email-template-review
+  - migration-validation
+metadata:
+  composition:
+    skills:
+      - imported.supabase
+      - imported.supabase-postgres-best-practices
+      - global.supabase-init-start
+      - global.supabase-auth-template-update
+      - global.setup-auth-oauth-google
+      - global.migration-handling
+    mcp_profile: profile.cursor-default
+    mcp_servers:
+      - mcp.supabase
+      - mcp.context7
+    cli_invocations:
+      - supabase start
+      - supabase db reset
+      - supabase migration list
+  usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - imported.supabase
+    - imported.supabase-postgres-best-practices
+    - global.supabase-init-start
+    - global.supabase-auth-template-update
+    - global.setup-auth-oauth-google
+    - global.migration-handling
+  tools:
+    - cli.supabase
+    - cli.turbo
+  env:
+    - SUPABASE_ACCESS_TOKEN
+    - GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET
+entrypoints:
+  prompt: agent-packages/supabase-auth-operator/object.yaml
+risk:
+  level: high
+  reasons:
+    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+  requires_human_review: true

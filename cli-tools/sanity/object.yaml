@@ -33,4 +33,4 @@ risk:
   level: medium
   reasons:
     - Requires authenticated CLI context for some operations.
-  requires_human_review: false
+  requires_human_review: true

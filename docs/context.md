@@ -22,7 +22,7 @@
 
 - The current user-level Cursor MCP file exists at `~/.cursor/mcp.json`, but it currently contains an empty `mcpServers` object.
 - No MCP server objects were imported during the first targeted Cursor ingest because there were no configured servers in that file.
-- The default local MCP profile is `mcp/profiles/cursor-default.yaml`; its include list is empty, which means exports include all normalized MCP servers unless exclusions are added.
+- The default local MCP profile is `mcp/profiles/cursor-default.yaml`; it now explicitly includes the draft Figma, 21st Dev, Context7, and Supabase MCP registry entries created from the skill asset roadmap.
 - `../seamless-agent-os` is configured as an example filesystem source. Its Vercel-style skills live at `.agents/skills/<slug>/SKILL.md` and are pinned by `skills-lock.json`.
 - The filesystem adapter supports `mode: vercel-skills` / `ingest.skills_md` and normalizes those `SKILL.md` files into imported `skill` registry objects with upstream GitHub provenance where available.
 - The first `seamless-agent-os` ingest imported six skills: `deploy-to-vercel`, `next-best-practices`, `shadcn-ui`, `supabase`, `supabase-postgres-best-practices`, and `vercel-react-best-practices`.
@@ -42,3 +42,5 @@
 - Added `docs/skill-assets-roadmap.md` as the canonical checklist for image-derived CLI, MCP, global skill, app-specific skill, hook, and subagent assets.
 - Local skills now use canonical registry YAML plus Cursor/Claude compatible `content/SKILL.md` entrypoints.
 - Draft MCP server entries require review before relying on exported Cursor MCP configuration.
+- Local skill entrypoints were upgraded from generic placeholders to docs-backed playbooks with domain-specific workflow, tool/MCP guidance, validation, and reference anchors.
+- The registry now scans `agent-packages/` as first-class canonical objects; index generation reports 54 objects including 8 focused agent packages.

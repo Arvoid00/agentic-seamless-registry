@@ -16,8 +16,10 @@ export interface RegistryIndexes {
   mcp: unknown;
 }
 
+export const REGISTRY_OBJECT_ROOTS = ["skills", "mcp", "cli-tools", "workflows", "templates", "policies", "agent-packages"];
+
 export async function readAllRegistryObjects(rootDir: string): Promise<NormalizedRegistryObject[]> {
-  const roots = ["skills", "mcp", "cli-tools", "workflows", "templates", "policies"].map((path) => join(rootDir, path));
+  const roots = REGISTRY_OBJECT_ROOTS.map((path) => join(rootDir, path));
   const files = (await Promise.all(roots.map((root) => walkFiles(root)))).flat();
   const canonicalFiles = files.filter((file) => /\.(ya?ml)$/.test(file) && !isMaterializedContentPath(file));
   const objects: NormalizedRegistryObject[] = [];
@@ -25,7 +27,12 @@ export async function readAllRegistryObjects(rootDir: string): Promise<Normalize
   for (const file of canonicalFiles) {
     const raw = await readYamlFile(file);
     const parsed = registryObjectSchema.safeParse(raw);
-    if (parsed.success) objects.push(parsed.data);
+    if (!parsed.success) {
+      const relativeFile = relativePath(rootDir, file);
+      throw new Error(`${relativeFile}: ${parsed.error.issues.map((issue) => issue.message).join("; ")}`);
+    }
+
+    objects.push(parsed.data);
   }
 
   return objects.sort((left, right) => left.id.localeCompare(right.id));
@@ -34,6 +41,7 @@ export async function readAllRegistryObjects(rootDir: string): Promise<Normalize
 export async function buildIndexes(rootDir: string): Promise<RegistryIndexes> {
   const objects = await readAllRegistryObjects(rootDir);
   const skills = objects.filter((object) => object.kind === "skill");
+  const agentPackages = objects.filter((object) => object.kind === "agent-package");
   const mcpServers = objects
     .map((object) => mcpServerRegistryObjectSchema.safeParse(object))
     .filter((result): result is { success: true; data: McpServerRegistryObject } => result.success)
@@ -50,6 +58,7 @@ export async function buildIndexes(rootDir: string): Promise<RegistryIndexes> {
       skills: skills.length,
       mcp_servers: mcpServers.length,
       mcp_profiles: mcpProfiles.length,
+      agent_packages: agentPackages.length,
     },
     objects: objects.map((object) => ({
       id: object.id,
@@ -81,6 +90,7 @@ export async function buildIndexes(rootDir: string): Promise<RegistryIndexes> {
       name: server.name,
       transport: server.server.transport,
       command: server.server.command,
+      args: server.server.args,
       capabilities: server.capabilities ?? [],
       env: server.env,
       review_required: server.security?.review_required ?? false,

@@ -1,0 +1,62 @@
+id: agent.frontend-experience-builder
+kind: agent-package
+name: Frontend Experience Builder
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: agent-packages/frontend-experience-builder/object.yaml
+description: Builds and reviews high-quality frontend experiences from design through implementation, accessibility, and E2E validation.
+tags:
+  - agent-package
+  - frontend
+  - ui
+  - accessibility
+capabilities:
+  - frontend-planning
+  - pixel-perfect-implementation
+  - ui-review
+  - e2e-validation
+metadata:
+  composition:
+    skills:
+      - global.front-end-design
+      - global.pixel-perfect-ui
+      - global.ui-ux-review
+      - global.e2e-create-run
+      - imported.shadcn-ui
+      - imported.next-best-practices
+      - imported.vercel-react-best-practices
+    mcp_profile: profile.cursor-default
+    mcp_servers:
+      - mcp.figma
+      - mcp.21st-dev
+      - mcp.context7
+    cli_invocations:
+      - npx shadcn@latest add <component>
+      - turbo run lint --filter=<app>
+      - turbo run typecheck --filter=<app>
+  usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - global.front-end-design
+    - global.pixel-perfect-ui
+    - global.ui-ux-review
+    - global.e2e-create-run
+    - imported.shadcn-ui
+    - imported.next-best-practices
+    - imported.vercel-react-best-practices
+  tools:
+    - cli.shadcn
+    - cli.turbo
+entrypoints:
+  prompt: agent-packages/frontend-experience-builder/object.yaml
+risk:
+  level: medium
+  reasons:
+    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+  requires_human_review: true

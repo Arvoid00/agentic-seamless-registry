@@ -22,7 +22,7 @@ server:
   command: npx
   args:
     - -y
-    - "@21st-dev/magic@latest"
+    - "@21st-dev/magic@0.1.0"
     - mcp
 env:
   required:

@@ -1,0 +1,178 @@
+id: project-launch-from-figma
+kind: workflow
+name: Project Launch From Figma
+scope: global
+version: 0.1.0
+status: draft
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: workflows/project-launch-from-figma/object.yaml
+description: Coordinate a new project launch from design context through repo setup, deployment,
+  CMS documentation, and optional Supabase provisioning.
+tags:
+  - workflow
+  - project-launch
+  - figma
+  - vercel
+  - sanity
+capabilities:
+  - project-bootstrap
+  - design-to-delivery
+  - service-provisioning
+metadata:
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: workflows
+  trigger: Start project
+  decision_points:
+    - id: figma-available
+      label: Figma?
+      yes: figma-available
+      no: google-drive-folder
+  stages:
+    - id: start-project
+      name: Start project
+      type: intake
+      registry_refs:
+        skills:
+          - global.start-project
+      outputs:
+        - project brief
+        - initial scope
+        - delivery checklist
+    - id: figma-available
+      name: Figma?
+      type: decision
+      registry_refs:
+        tools:
+          - mcp.figma
+        skills:
+          - global.front-end-design
+          - global.ui-ux-review
+      outputs:
+        - design source decision
+    - id: google-drive-folder
+      name: Google Drive Folder
+      type: external-service
+      registry_refs: {}
+      outputs:
+        - shared project folder
+      notes:
+        - No Google Drive registry object exists yet.
+    - id: notion-project-roadmap
+      name: Notion project + standard taken/roadmap
+      type: external-service
+      registry_refs: {}
+      outputs:
+        - Notion project
+        - standard tasks
+        - roadmap
+      notes:
+        - Notion is configured as a disabled source stub, but no normalized Notion registry objects exist yet.
+    - id: github-repo
+      name: GitHub repo from template
+      type: implementation
+      registry_refs:
+        tools:
+          - cli.github
+        skills:
+          - global.create-commit
+          - global.monorepo-style-app-package-creation
+      outputs:
+        - repository
+        - initial commit
+    - id: vercel-deployment
+      name: Vercel deployment
+      type: deployment
+      depends_on:
+        - github-repo
+      registry_refs:
+        skills:
+          - imported.deploy-to-vercel
+          - imported.next-best-practices
+          - imported.vercel-react-best-practices
+      outputs:
+        - preview deployment
+        - deployment URL
+    - id: sanity-project
+      name: Sanity Project
+      type: cms
+      registry_refs:
+        tools:
+          - cli.sanity
+        skills:
+          - global.sanity
+          - app-specific.create-sanity-cms-manuals
+      outputs:
+        - Sanity project
+        - content model
+    - id: sanity-manual
+      name: Handleiding
+      type: documentation
+      depends_on:
+        - sanity-project
+      registry_refs:
+        skills:
+          - app-specific.create-sanity-cms-manuals
+      outputs:
+        - editor manual
+    - id: agentation
+      name: Agentation.com
+      type: external-service
+      registry_refs: {}
+      outputs:
+        - Agentation handoff placeholder
+      notes:
+        - No Agentation.com registry object exists yet.
+    - id: supabase
+      name: Supabase?
+      type: optional-service
+      registry_refs:
+        tools:
+          - cli.supabase
+        skills:
+          - imported.supabase
+          - global.supabase-init-start
+          - global.supabase-auth-template-update
+      outputs:
+        - optional Supabase project
+        - database/auth setup notes
+  unmapped_services:
+    - name: Google Drive
+      reason: No registry object or enabled ingestion source exists yet.
+    - name: Notion project/roadmap
+      reason: Notion source is configured but disabled and not normalized into registry objects yet.
+    - name: Agentation.com
+      reason: Product/API integration shape is not defined in the registry yet.
+requires:
+  tools:
+    - mcp.figma
+    - cli.github
+    - cli.sanity
+    - cli.supabase
+  skills:
+    - global.start-project
+    - global.front-end-design
+    - global.ui-ux-review
+    - global.create-commit
+    - global.monorepo-style-app-package-creation
+    - imported.deploy-to-vercel
+    - imported.next-best-practices
+    - imported.vercel-react-best-practices
+    - global.sanity
+    - app-specific.create-sanity-cms-manuals
+    - imported.supabase
+    - global.supabase-init-start
+    - global.supabase-auth-template-update
+  env:
+    - FIGMA_API_KEY
+    - GH_TOKEN
+    - SANITY_AUTH_TOKEN
+    - SUPABASE_ACCESS_TOKEN
+risk:
+  level: medium
+  reasons:
+    - Coordinates multiple external services with authenticated CLI and MCP contexts.
+    - Some services in the source diagram do not have registry objects yet.
+  requires_human_review: true

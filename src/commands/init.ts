@@ -22,6 +22,7 @@ const REGISTRY_DIRS = [
   "templates",
   "policies",
   "workflows",
+  "agent-packages",
   "dist/agent-packages",
 ];
 

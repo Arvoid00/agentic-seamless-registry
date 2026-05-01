@@ -93,6 +93,17 @@ Cursor-managed and personal skills to reference as source material:
 - [x] documentation drift subagent -> `.cursor/agents/documentation-drift-reviewer.md`
 - [x] release/changelog subagent -> `.cursor/agents/release-changelog-writer.md`
 
+### Focused Agent Packages
+
+- [x] Frontend experience builder -> `agent-packages/frontend-experience-builder/object.yaml`
+- [x] Full-stack feature operator -> `agent-packages/full-stack-feature-operator/object.yaml`
+- [x] Supabase auth operator -> `agent-packages/supabase-auth-operator/object.yaml`
+- [x] Content commerce operator -> `agent-packages/content-commerce-operator/object.yaml`
+- [x] Dependency security maintainer -> `agent-packages/dependency-security-maintainer/object.yaml`
+- [x] Release readiness coordinator -> `agent-packages/release-readiness-coordinator/object.yaml`
+- [x] Data platform operator -> `agent-packages/data-platform-operator/object.yaml`
+- [x] Research docs curator -> `agent-packages/research-docs-curator/object.yaml`
+
 ## Implementation Waves
 
 1. Roadmap and inventory: keep this document current as registry assets are added.
@@ -100,6 +111,7 @@ Cursor-managed and personal skills to reference as source material:
 3. Tooling assets: add CLI tool and MCP server registry entries with explicit security/env metadata.
 4. Hooks and subagents: use deterministic hooks for dangerous commands and subagents for review-heavy workflows.
 5. App-specific skills: keep app workflow skills scoped under `skills/app-specific/` until they are generalized.
+6. Focused agent packages: compose skills, MCP profiles, and CLI invocations into narrow specialist packages.
 
 ## Acceptance Criteria
 
@@ -108,5 +120,6 @@ Cursor-managed and personal skills to reference as source material:
 - Every MCP server has no inline secrets and marks review-required configuration.
 - Every hook is executable, has a narrow event, and returns only fields supported by the event.
 - Every subagent has valid frontmatter and a focused system prompt.
+- Every focused agent package lists its skills, MCP servers/profile, CLI invocations, env requirements, and human-review risk.
 - `pnpm registry:validate` and `pnpm registry:index` pass after registry object changes.
 

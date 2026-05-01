@@ -1,0 +1,56 @@
+id: agent.release-readiness-coordinator
+kind: agent-package
+name: Release Readiness Coordinator
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: agent-packages/release-readiness-coordinator/object.yaml
+description: Turns completed work into deployment checklists, changelogs, release notes, and final readiness evidence.
+tags:
+  - agent-package
+  - release
+  - deployment
+  - changelog
+capabilities:
+  - deployment-readiness
+  - release-notes
+  - changelog-writing
+  - ci-review
+metadata:
+  composition:
+    skills:
+      - global.create-deployment-checklist
+      - global.user-facing-changelog
+      - global.documentation-updates-drift
+      - global.copy-writer
+      - global.e2e-create-run
+    mcp_profile: profile.cursor-default
+    mcp_servers:
+      - mcp.context7
+    cli_invocations:
+      - gh pr checks --watch --required
+      - gh release create <tag> --generate-notes --verify-tag
+      - turbo run test --filter=<workspace>
+  usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - global.create-deployment-checklist
+    - global.user-facing-changelog
+    - global.documentation-updates-drift
+    - global.copy-writer
+    - global.e2e-create-run
+  tools:
+    - cli.github
+    - cli.turbo
+entrypoints:
+  prompt: agent-packages/release-readiness-coordinator/object.yaml
+risk:
+  level: medium
+  reasons:
+    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+  requires_human_review: true
