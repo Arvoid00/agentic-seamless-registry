@@ -36,5 +36,8 @@ metadata:
       (query performance, connection management) to incremental (advanced features). Each rule
       includes detailed explanations, incorrect vs. correct SQL examples, query plan analysis, and
       specific performance metrics to guide automated optimization and code generation.
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/supabase-postgres-best-practices/SKILL.md
+  materialized_dir: skills/imported/imported.supabase-postgres-best-practices/content
 entrypoints:
-  prompt: ../seamless-agent-os/.agents/skills/supabase-postgres-best-practices/SKILL.md
+  prompt: skills/imported/imported.supabase-postgres-best-practices/content/SKILL.md

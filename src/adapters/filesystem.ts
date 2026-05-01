@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { basename, dirname, join, relative } from "node:path";
 import { parse } from "yaml";
+import { objectPath, relativePath } from "../paths.js";
 import type { NormalizedRegistryObject, RawIngestedObject, SourceAdapter, SourceConfig } from "../types.js";
 import { registryObjectSchema } from "../types.js";
 import { pathExists, readJsonFile, readYamlFile, resolveFromRoot, walkFiles } from "../utils/fs.js";
@@ -40,7 +41,9 @@ export class FilesystemAdapter implements SourceAdapter {
   async fetch(): Promise<RawIngestedObject[]> {
     const sourcePath = resolveFromRoot(this.rootDir, this.source.path ?? ".");
     const files = await walkFiles(sourcePath);
-    const canonicalFiles = this.shouldIngestCanonicalYaml() ? files.filter((file) => /(?:skill|server|object)\.ya?ml$/.test(file)) : [];
+    const canonicalFiles = this.shouldIngestCanonicalYaml()
+      ? files.filter((file) => /(?:skill|server|object)\.ya?ml$/.test(file) && !isMaterializedContentPath(file))
+      : [];
     const skillMarkdownFiles = this.shouldIngestSkillMarkdown()
       ? files.filter((file) => basename(file) === "SKILL.md" && !this.isExcluded(file, sourcePath))
       : [];
@@ -87,20 +90,20 @@ export class FilesystemAdapter implements SourceAdapter {
     }
 
     if (filesystemRaw.format === "skill-md") {
-      return [registryObjectSchema.parse(this.normalizeSkillMarkdown(raw, filesystemRaw))];
+      return [registryObjectSchema.parse(await this.normalizeSkillMarkdown(raw, filesystemRaw))];
     }
 
     return [registryObjectSchema.parse(raw.raw)];
   }
 
-  private normalizeSkillMarkdown(raw: RawIngestedObject, skill: SkillMarkdownRaw): NormalizedRegistryObject {
+  private async normalizeSkillMarkdown(raw: RawIngestedObject, skill: SkillMarkdownRaw): Promise<NormalizedRegistryObject> {
     const name = stringFromUnknown(skill.frontmatter.name) ?? skill.slug;
     const metadata = recordFromUnknown(skill.frontmatter.metadata);
     const version = stringFromUnknown(metadata.version) ?? "0.1.0";
     const allowedTools = stringArrayFromUnknown(skill.frontmatter["allowed-tools"]);
     const upstreamUrl = skill.lockEntry?.sourceType === "github" && skill.lockEntry.source ? `https://github.com/${skill.lockEntry.source}` : undefined;
 
-    return {
+    const normalized: NormalizedRegistryObject = {
       id: `imported.${skill.slug}`,
       kind: "skill",
       name,
@@ -128,6 +131,29 @@ export class FilesystemAdapter implements SourceAdapter {
         upstream_source_type: skill.lockEntry?.sourceType,
         upstream_hash: skill.lockEntry?.computedHash,
         frontmatter_metadata: metadata,
+      },
+    };
+
+    return this.applyMaterializedEntrypoint(normalized);
+  }
+
+  private async applyMaterializedEntrypoint(skill: NormalizedRegistryObject): Promise<NormalizedRegistryObject> {
+    const skillDir = dirname(objectPath(this.rootDir, skill));
+    const contentDir = join(skillDir, "content");
+    const materializedPrompt = join(contentDir, "SKILL.md");
+    if (!(await pathExists(materializedPrompt))) return skill;
+
+    return {
+      ...skill,
+      entrypoints: {
+        ...(skill.entrypoints ?? {}),
+        prompt: relativePath(this.rootDir, materializedPrompt),
+      },
+      metadata: {
+        ...(skill.metadata ?? {}),
+        materialized: true,
+        materialized_from: skill.source.source_path,
+        materialized_dir: relativePath(this.rootDir, contentDir),
       },
     };
   }
@@ -188,4 +214,12 @@ function tagsForSkill(skill: SkillMarkdownRaw, upstreamUrl?: string): string[] {
   if (upstreamUrl) tags.add("github");
   for (const part of skill.slug.split(/[-_.]+/).filter(Boolean)) tags.add(part);
   return [...tags].sort();
+}
+
+function isMaterializedContentPath(file: string): boolean {
+  const segments = file.split(/[\\/]/);
+  return segments.some(
+    (segment, index) =>
+      segment === "skills" && segments[index + 1] === "imported" && segments[index + 2]?.startsWith("imported.") && segments[index + 3] === "content",
+  );
 }

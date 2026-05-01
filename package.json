@@ -3,14 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "bin": {
-    "seamless-registry": "./src/cli/index.ts"
-  },
   "scripts": {
     "registry:init": "tsx src/cli/index.ts init",
     "registry:ingest": "tsx src/cli/index.ts ingest",
     "registry:validate": "tsx src/cli/index.ts validate",
     "registry:index": "tsx src/cli/index.ts index",
+    "registry:materialize": "tsx src/cli/index.ts materialize",
     "registry:export": "tsx src/cli/index.ts export",
     "registry:doctor": "tsx src/cli/index.ts doctor",
     "typecheck": "tsc --noEmit"

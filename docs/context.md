@@ -16,6 +16,7 @@
 - Cursor MCP ingestion reads `~/.cursor/mcp.json`, stores a redacted raw snapshot under `sources/`, and normalizes MCP servers into `mcp/servers/<id>/server.yaml`.
 - Index generation writes compact agent-facing indexes to `dist/registry.index.json`, `dist/skills.index.json`, and `dist/mcp.index.json`.
 - Cursor export writes generated MCP config to `dist/agent-packages/cursor/mcp.json`.
+- `materialize` copies imported skill source folders into normalized registry folders and rewrites entrypoints to local registry paths.
 
 ## Important Findings
 
@@ -26,11 +27,12 @@
 - The filesystem adapter supports `mode: vercel-skills` / `ingest.skills_md` and normalizes those `SKILL.md` files into imported `skill` registry objects with upstream GitHub provenance where available.
 - The first `seamless-agent-os` ingest imported six skills: `deploy-to-vercel`, `next-best-practices`, `shadcn-ui`, `supabase`, `supabase-postgres-best-practices`, and `vercel-react-best-practices`.
 - Imported registry objects use deterministic `source.imported_at: null`; ingest timestamps live in `registry.lock.json` so repeat ingests can skip unchanged objects cleanly.
+- Run `pnpm registry:materialize --source seamless-agent-os` after ingesting external `SKILL.md` sources to make imported skill entrypoints and sibling collateral self-contained under `skills/imported/<id>/content/`.
+- The latest materialize run copied 133 files across the six imported skills. Re-running `ingest` after materialization skips unchanged objects because the filesystem adapter now detects existing `content/SKILL.md` files and emits local entrypoints.
 
 ## Next Useful Extensions
 
 - Add a real Cursor MCP server to `~/.cursor/mcp.json` and rerun `pnpm registry:ingest --source cursor-mcp-config`.
-- Copy imported skill entrypoint content into normalized registry folders instead of pointing `entrypoints.prompt` at the source repo path.
 - Implement GitHub ingestion by downloading or cloning a configured repo ref into `sources/github/<source-id>`.
 - Add profile-aware MCP exports for Claude Desktop, Codex, and OpenClaw.
 - Add richer conflict review output with side-by-side normalized YAML diffs.

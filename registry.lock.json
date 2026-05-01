@@ -4,49 +4,92 @@
     "cursor-mcp-config": {
       "type": "cursor",
       "path": "~/.cursor/mcp.json",
-      "last_ingested_at": "2026-05-01T12:54:18.821Z",
+      "last_ingested_at": "2026-05-01T13:36:40.781Z",
       "objects": []
     },
     "seamless-agent-os": {
       "type": "filesystem",
       "path": "../seamless-agent-os",
-      "last_ingested_at": "2026-05-01T13:06:03.619Z",
+      "last_ingested_at": "2026-05-01T13:36:41.476Z",
       "objects": [
         {
           "id": "imported.deploy-to-vercel",
           "kind": "skill",
           "path": "skills/imported/imported.deploy-to-vercel/skill.yaml",
-          "hash": "sha256-8fb74335e6cb12886f48c0503c962c0c65a57768cc0c60ebdaf1ecbdf977c146"
+          "hash": "sha256-3c60960784feb599ece2d67042a9494af0e2d54dd25c7cb15db651a5e572e112"
         },
         {
           "id": "imported.next-best-practices",
           "kind": "skill",
           "path": "skills/imported/imported.next-best-practices/skill.yaml",
-          "hash": "sha256-05f4da9d6864e4619672736abd677af02c594250d4a3e593bfaf96d2f2319872"
+          "hash": "sha256-3e347b3c1870c8ac4d8f5748ee9e82d245d7194ad33b54067e7c71e68faa72fa"
         },
         {
           "id": "imported.shadcn-ui",
           "kind": "skill",
           "path": "skills/imported/imported.shadcn-ui/skill.yaml",
-          "hash": "sha256-ceb032c6df237177582485434a21465f99346e0484e972cca780095baa6903e3"
+          "hash": "sha256-4d64195d115f4af7aeaa14683eb3cdc7b3f0b9ff42794478ab732646caef3aba"
         },
         {
           "id": "imported.supabase-postgres-best-practices",
           "kind": "skill",
           "path": "skills/imported/imported.supabase-postgres-best-practices/skill.yaml",
-          "hash": "sha256-bf8cefd99a703f739df0b89774da96d88099b7812889b025cdf18b80938f6f2d"
+          "hash": "sha256-4d47e353c306708dad097801996766339f97d8f5e9e33a00f8463cdc18f936cc"
         },
         {
           "id": "imported.supabase",
           "kind": "skill",
           "path": "skills/imported/imported.supabase/skill.yaml",
-          "hash": "sha256-bd65b246ef085c53bad330c0d9ba9c03dab927ce56e7c56a2f14e5397551db52"
+          "hash": "sha256-fafa6e2faa3c04a08699b5ed4887687027ac01f2701e67ad5f2345b02e34ce65"
         },
         {
           "id": "imported.vercel-react-best-practices",
           "kind": "skill",
           "path": "skills/imported/imported.vercel-react-best-practices/skill.yaml",
-          "hash": "sha256-918dd91b1a282d49190482dc90a9818519d50dfa47f92f5ecdbfd5ea81e728ac"
+          "hash": "sha256-123b9953e2b9bc10872fcbd4dc5357fb6bb936dd5635454ce9982b94dc89e01b"
+        }
+      ]
+    },
+    "seamless-local-skills": {
+      "type": "filesystem",
+      "path": "./skills",
+      "last_ingested_at": "2026-05-01T13:36:40.779Z",
+      "objects": [
+        {
+          "id": "imported.deploy-to-vercel",
+          "kind": "skill",
+          "path": "skills/imported/imported.deploy-to-vercel/skill.yaml",
+          "hash": "sha256-3c60960784feb599ece2d67042a9494af0e2d54dd25c7cb15db651a5e572e112"
+        },
+        {
+          "id": "imported.next-best-practices",
+          "kind": "skill",
+          "path": "skills/imported/imported.next-best-practices/skill.yaml",
+          "hash": "sha256-3e347b3c1870c8ac4d8f5748ee9e82d245d7194ad33b54067e7c71e68faa72fa"
+        },
+        {
+          "id": "imported.shadcn-ui",
+          "kind": "skill",
+          "path": "skills/imported/imported.shadcn-ui/skill.yaml",
+          "hash": "sha256-4d64195d115f4af7aeaa14683eb3cdc7b3f0b9ff42794478ab732646caef3aba"
+        },
+        {
+          "id": "imported.supabase-postgres-best-practices",
+          "kind": "skill",
+          "path": "skills/imported/imported.supabase-postgres-best-practices/skill.yaml",
+          "hash": "sha256-4d47e353c306708dad097801996766339f97d8f5e9e33a00f8463cdc18f936cc"
+        },
+        {
+          "id": "imported.supabase",
+          "kind": "skill",
+          "path": "skills/imported/imported.supabase/skill.yaml",
+          "hash": "sha256-fafa6e2faa3c04a08699b5ed4887687027ac01f2701e67ad5f2345b02e34ce65"
+        },
+        {
+          "id": "imported.vercel-react-best-practices",
+          "kind": "skill",
+          "path": "skills/imported/imported.vercel-react-best-practices/skill.yaml",
+          "hash": "sha256-123b9953e2b9bc10872fcbd4dc5357fb6bb936dd5635454ce9982b94dc89e01b"
         }
       ]
     }

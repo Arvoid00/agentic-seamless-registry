@@ -27,5 +27,8 @@ metadata:
   upstream_source_type: github
   upstream_hash: 515ba75178bd44875812d9a560bdf14651f86709f89cf1d4f209638e879807f3
   frontmatter_metadata: {}
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/next-best-practices/SKILL.md
+  materialized_dir: skills/imported/imported.next-best-practices/content
 entrypoints:
-  prompt: ../seamless-agent-os/.agents/skills/next-best-practices/SKILL.md
+  prompt: skills/imported/imported.next-best-practices/content/SKILL.md

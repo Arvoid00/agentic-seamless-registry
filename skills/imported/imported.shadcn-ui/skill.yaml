@@ -25,6 +25,9 @@ metadata:
   upstream_source_type: github
   upstream_hash: dadbca54d35a33fe73e40018611af2179689305bf6da812ab2643987fefd9da3
   frontmatter_metadata: {}
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/shadcn-ui/SKILL.md
+  materialized_dir: skills/imported/imported.shadcn-ui/content
 requires:
   tools:
     - shadcn*:*
@@ -34,4 +37,4 @@ requires:
     - Bash
     - web_fetch
 entrypoints:
-  prompt: ../seamless-agent-os/.agents/skills/shadcn-ui/SKILL.md
+  prompt: skills/imported/imported.shadcn-ui/content/SKILL.md

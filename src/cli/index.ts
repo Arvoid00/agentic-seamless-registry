@@ -7,6 +7,7 @@ import { indexCommand } from "../commands/index.js";
 import { ingestCommand } from "../commands/ingest.js";
 import { initCommand } from "../commands/init.js";
 import { listCommand } from "../commands/list.js";
+import { materializeCommand } from "../commands/materialize.js";
 import { validateCommand } from "../commands/validate.js";
 
 const rootDir = process.cwd();
@@ -27,6 +28,12 @@ program.command("validate").description("Validate canonical registry objects.").
 program.command("index").description("Generate agent-facing registry indexes.").action(() => run(() => indexCommand(rootDir)));
 
 program.command("list").description("List registry objects by kind.").argument("<kind>", "skills | mcp").action((kind: string) => run(() => listCommand(rootDir, kind)));
+
+program
+  .command("materialize")
+  .description("Copy imported source content into normalized registry folders.")
+  .option("--source <id>", "Only materialize imported objects from one source")
+  .action((options: { source?: string }) => run(() => materializeCommand(rootDir, options)));
 
 program.command("diff").description("Show scaffolded source diff guidance.").option("--source <id>", "Source id to diff").action((options: { source?: string }) => run(() => diffCommand(rootDir, options)));
 

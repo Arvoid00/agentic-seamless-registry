@@ -31,5 +31,8 @@ metadata:
   frontmatter_metadata:
     author: vercel
     version: 1.0.0
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/vercel-react-best-practices/SKILL.md
+  materialized_dir: skills/imported/imported.vercel-react-best-practices/content
 entrypoints:
-  prompt: ../seamless-agent-os/.agents/skills/vercel-react-best-practices/SKILL.md
+  prompt: skills/imported/imported.vercel-react-best-practices/content/SKILL.md

@@ -29,5 +29,8 @@ metadata:
   frontmatter_metadata:
     author: vercel
     version: 3.0.0
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/deploy-to-vercel/SKILL.md
+  materialized_dir: skills/imported/imported.deploy-to-vercel/content
 entrypoints:
-  prompt: ../seamless-agent-os/.agents/skills/deploy-to-vercel/SKILL.md
+  prompt: skills/imported/imported.deploy-to-vercel/content/SKILL.md

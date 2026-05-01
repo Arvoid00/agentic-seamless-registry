@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import { objectPath } from "../paths.js";
+import { objectPath, relativePath } from "../paths.js";
 import {
   mcpProfileRegistryObjectSchema,
   mcpServerRegistryObjectSchema,
@@ -19,7 +19,7 @@ export interface RegistryIndexes {
 export async function readAllRegistryObjects(rootDir: string): Promise<NormalizedRegistryObject[]> {
   const roots = ["skills", "mcp", "cli-tools", "workflows", "templates", "policies"].map((path) => join(rootDir, path));
   const files = (await Promise.all(roots.map((root) => walkFiles(root)))).flat();
-  const canonicalFiles = files.filter((file) => /\.(ya?ml)$/.test(file));
+  const canonicalFiles = files.filter((file) => /\.(ya?ml)$/.test(file) && !isMaterializedContentPath(file));
   const objects: NormalizedRegistryObject[] = [];
 
   for (const file of canonicalFiles) {
@@ -57,7 +57,7 @@ export async function buildIndexes(rootDir: string): Promise<RegistryIndexes> {
       name: object.name,
       status: object.status,
       source: object.source,
-      path: objectPath(rootDir, object).replace(`${rootDir}/`, ""),
+      path: relativePath(rootDir, objectPath(rootDir, object)),
     })),
   };
 
@@ -102,4 +102,12 @@ export async function buildIndexes(rootDir: string): Promise<RegistryIndexes> {
   }
 
   return { registry, skills: skillsIndex, mcp: mcpIndex };
+}
+
+function isMaterializedContentPath(file: string): boolean {
+  const segments = file.split(/[\\/]/);
+  return segments.some(
+    (segment, index) =>
+      segment === "skills" && segments[index + 1] === "imported" && segments[index + 2]?.startsWith("imported.") && segments[index + 3] === "content",
+  );
 }

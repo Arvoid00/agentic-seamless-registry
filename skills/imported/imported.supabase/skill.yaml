@@ -30,5 +30,8 @@ metadata:
   frontmatter_metadata:
     author: supabase
     version: 0.1.0
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/supabase/SKILL.md
+  materialized_dir: skills/imported/imported.supabase/content
 entrypoints:
-  prompt: ../seamless-agent-os/.agents/skills/supabase/SKILL.md
+  prompt: skills/imported/imported.supabase/content/SKILL.md
