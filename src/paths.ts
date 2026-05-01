@@ -7,6 +7,7 @@ function safeSegment(value: string): string {
     .replace(/^profile\./, "")
     .replace(/^cli\./, "")
     .replace(/^agent\./, "")
+    .replace(/^workflow\./, "")
     .replace(/^global\./, "")
     .replace(/^app-specific\./, "")
     .replace(/[^a-zA-Z0-9._-]+/g, "-")

@@ -54,9 +54,9 @@ requires:
     - cli.shadcn
     - cli.turbo
 entrypoints:
-  prompt: agent-packages/frontend-experience-builder/object.yaml
+  prompt: agent-packages/frontend-experience-builder/AGENT.md
 risk:
   level: medium
   reasons:
-    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+    - Can change user-facing UI behavior and depends on design/MCP context that must be verified.
   requires_human_review: true

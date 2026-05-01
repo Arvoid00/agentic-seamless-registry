@@ -18,6 +18,10 @@
 - [x] Add tool and MCP guidance to each skill so agents know when to use Context7, Supabase, Figma, 21st Dev, and CLI tools.
 - [x] Add validation sections to every local skill.
 - [x] Add official documentation anchors to every local skill.
+- [x] Verify all 29 local skill entrypoints against the Cursor skill outline and remove repeated boilerplate bloat.
+- [x] Remove generic guardrail sections that were not specific to each skill's description.
+- [x] Remove off-scope validation text from non-UI/non-content skills.
+- [x] Keep each skill focused on its own triggers, domain checklist, tools, validation, references, and output.
 - [ ] Decide whether imported skills should remain read-only or receive local wrapper skills for project-specific constraints.
 - [ ] Add optional `references.md` files only for skills that outgrow the main `SKILL.md`.
 
@@ -31,12 +35,14 @@
 - [x] `agent.release-readiness-coordinator`: combines deployment checklists, changelogs, docs drift, copywriting, E2E, GitHub CLI, Turbo, and Context7.
 - [x] `agent.data-platform-operator`: combines Databricks, migration handling, code guidelines, deployment readiness, Databricks CLI, GitHub CLI, and Context7.
 - [x] `agent.research-docs-curator`: combines research prompts, docs drift, code guidelines, copywriting, GitHub CLI, and Context7.
+- [x] Each focused agent package now resolves to an `AGENT.md` prompt entrypoint instead of raw YAML metadata.
 
 ## MCP And CLI Guardrails
 
 - [x] Keep MCP profile env policy set to explicit env mapping and inline secret blocking.
 - [x] Keep MCP servers in draft/review-required state until package identity and env scopes are verified.
 - [x] Record provider CLI invocations in agent package metadata instead of assuming they are installed.
+- [x] Add provider CLI objects for Stripe, Resend, and Databricks because focused agents invoke those commands.
 - [ ] Add separate read-only and write-enabled MCP profiles before exporting to shared clients.
 - [ ] Add quarterly review cadence for agent package tool access and MCP server scopes.
 
@@ -44,6 +50,6 @@
 
 - [x] Run `pnpm registry:validate`.
 - [x] Run `pnpm registry:index` after validation passes.
-- [x] Inspect generated `dist/` objects for new `agent-package` entries: `dist/registry.index.json` reports 54 objects and 8 agent packages.
+- [x] Inspect generated `dist/` objects for new `agent-package` entries: `dist/registry.index.json` reports 57 objects and 8 agent packages.
 - [ ] Review changed skill descriptions in Cursor/Claude-compatible discovery contexts.
 - [ ] Decide whether to promote MCP server entries from `draft` to `active` after manual package verification.

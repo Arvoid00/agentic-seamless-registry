@@ -9,6 +9,7 @@ import { initCommand } from "../commands/init.js";
 import { listCommand } from "../commands/list.js";
 import { materializeCommand } from "../commands/materialize.js";
 import { validateCommand } from "../commands/validate.js";
+import { workflowCommand } from "../commands/workflow.js";
 
 const rootDir = process.cwd();
 const program = new Command();
@@ -28,6 +29,14 @@ program.command("validate").description("Validate canonical registry objects.").
 program.command("index").description("Generate agent-facing registry indexes.").action(() => run(() => indexCommand(rootDir)));
 
 program.command("list").description("List registry objects by kind.").argument("<kind>", "skills | mcp").action((kind: string) => run(() => listCommand(rootDir, kind)));
+
+program
+  .command("workflow")
+  .description("Kick off a registry workflow by collecting inputs and printing an agent prompt.")
+  .argument("<id>", "Workflow id or folder slug")
+  .option("--var <key=value>", "Workflow variable; repeat for multiple values.", collectValues, [])
+  .option("--non-interactive", "Fail instead of prompting when required variables are missing.")
+  .action((id: string, options: { var?: string[]; nonInteractive?: boolean }) => run(() => workflowCommand(rootDir, id, options)));
 
 program
   .command("materialize")
@@ -55,4 +64,9 @@ async function run(action: () => Promise<void>): Promise<void> {
     console.error(error instanceof Error ? error.message : error);
     process.exitCode = 1;
   }
+}
+
+function collectValues(value: string, previous: string[]): string[] {
+  previous.push(value);
+  return previous;
 }

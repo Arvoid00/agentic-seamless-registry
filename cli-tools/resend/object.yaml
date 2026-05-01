@@ -1,0 +1,35 @@
+id: cli.resend
+kind: cli-tool
+name: Resend CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/resend/object.yaml
+description: Resend CLI registry entry for transactional email send checks and webhook setup.
+tags:
+  - cli
+  - resend
+capabilities:
+  - transactional-email-testing
+  - webhook-setup
+metadata:
+  command: resend
+  install: npm install -g resend-cli or use provider-supported tooling documented at https://resend.com/docs
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - global.resend
+    - global.react-email-creation
+  env:
+    - RESEND_API_KEY
+entrypoints:
+  command: resend
+risk:
+  level: high
+  reasons:
+    - Can send external email and manage provider webhook configuration.
+  requires_human_review: true

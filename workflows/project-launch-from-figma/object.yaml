@@ -25,6 +25,40 @@ metadata:
   roadmap: docs/skill-assets-roadmap.md
   image_lane: workflows
   trigger: Start project
+  inputs:
+    - id: project_name
+      label: Project name
+      required: true
+    - id: project_goal
+      label: Project goal
+      required: true
+    - id: figma_url
+      label: Figma URL or "none"
+      required: true
+    - id: github_owner
+      label: GitHub org or user
+      required: true
+    - id: template_repo
+      label: Template repository
+      required: true
+    - id: vercel_team
+      label: Vercel team or account
+      required: true
+    - id: sanity_project
+      label: Sanity project name
+      required: true
+    - id: supabase_needed
+      label: Supabase needed? (yes/no)
+      required: true
+    - id: drive_folder
+      label: Existing Google Drive folder or "create"
+      required: false
+    - id: notion_workspace
+      label: Notion workspace/project target
+      required: false
+    - id: agentation_context
+      label: Agentation.com handoff notes
+      required: false
   decision_points:
     - id: figma-available
       label: Figma?

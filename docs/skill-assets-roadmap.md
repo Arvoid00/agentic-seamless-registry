@@ -38,6 +38,9 @@ Cursor-managed and personal skills to reference as source material:
 - [x] `Turbo` -> `cli-tools/turbo/object.yaml`
 - [x] `Github` -> `cli-tools/github/object.yaml`
 - [x] `Shadcn` -> `cli-tools/shadcn/object.yaml`
+- [x] `Stripe` -> `cli-tools/stripe/object.yaml`
+- [x] `Resend` -> `cli-tools/resend/object.yaml`
+- [x] `Databricks` -> `cli-tools/databricks/object.yaml`
 
 ### MCP
 
@@ -92,6 +95,10 @@ Cursor-managed and personal skills to reference as source material:
 - [x] dependency/security subagent -> `.cursor/agents/security-dependency-reviewer.md`
 - [x] documentation drift subagent -> `.cursor/agents/documentation-drift-reviewer.md`
 - [x] release/changelog subagent -> `.cursor/agents/release-changelog-writer.md`
+
+### Workflows
+
+- [x] Project launch from Figma -> `workflows/project-launch-from-figma/object.yaml`
 
 ### Focused Agent Packages
 

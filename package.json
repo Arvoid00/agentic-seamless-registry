@@ -8,6 +8,7 @@
     "registry:ingest": "tsx src/cli/index.ts ingest",
     "registry:validate": "tsx src/cli/index.ts validate",
     "registry:index": "tsx src/cli/index.ts index",
+    "registry:workflow": "tsx src/cli/index.ts workflow",
     "registry:materialize": "tsx src/cli/index.ts materialize",
     "registry:export": "tsx src/cli/index.ts export",
     "registry:doctor": "tsx src/cli/index.ts doctor",

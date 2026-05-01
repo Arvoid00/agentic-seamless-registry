@@ -1,0 +1,35 @@
+id: cli.stripe
+kind: cli-tool
+name: Stripe CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/stripe/object.yaml
+description: Stripe CLI registry entry for webhook forwarding, event testing, and billing integration checks.
+tags:
+  - cli
+  - stripe
+capabilities:
+  - webhook-forwarding
+  - billing-test-events
+metadata:
+  command: stripe
+  install: brew install stripe/stripe-cli/stripe or see https://docs.stripe.com/stripe-cli
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - global.stripe
+  env:
+    - STRIPE_SECRET_KEY
+    - STRIPE_WEBHOOK_SECRET
+entrypoints:
+  command: stripe
+risk:
+  level: high
+  reasons:
+    - Can interact with billing resources and webhook secrets.
+  requires_human_review: true

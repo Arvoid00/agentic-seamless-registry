@@ -43,4 +43,5 @@
 - Local skills now use canonical registry YAML plus Cursor/Claude compatible `content/SKILL.md` entrypoints.
 - Draft MCP server entries require review before relying on exported Cursor MCP configuration.
 - Local skill entrypoints were upgraded from generic placeholders to docs-backed playbooks with domain-specific workflow, tool/MCP guidance, validation, and reference anchors.
-- The registry now scans `agent-packages/` as first-class canonical objects; index generation reports 54 objects including 8 focused agent packages.
+- The registry now scans `agent-packages/` as first-class canonical objects; index generation reports 57 objects including 8 focused agent packages and provider CLI entries for Stripe, Resend, and Databricks.
+- Local skill entrypoints were trimmed again to remove repeated guardrail/validation boilerplate; each now keeps only trigger scope, domain checklist, relevant tools, validation, references, and output.

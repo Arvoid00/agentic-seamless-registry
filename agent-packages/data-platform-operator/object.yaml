@@ -32,6 +32,8 @@ metadata:
       - databricks auth login --host <workspace>
       - databricks warehouses list
       - databricks jobs run-now <job-id>
+      - turbo run typecheck --filter=<workspace>
+      - gh pr checks --watch --required
   usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
   roadmap: docs/skill-agent-upgrade-checklist.md
 requires:
@@ -41,6 +43,7 @@ requires:
     - global.code-guidelines
     - global.create-deployment-checklist
   tools:
+    - cli.databricks
     - cli.github
     - cli.turbo
   env:
@@ -48,9 +51,9 @@ requires:
     - DATABRICKS_CLIENT_ID
     - DATABRICKS_CLIENT_SECRET
 entrypoints:
-  prompt: agent-packages/data-platform-operator/object.yaml
+  prompt: agent-packages/data-platform-operator/AGENT.md
 risk:
   level: high
   reasons:
-    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+    - Can run paid data-platform jobs, query warehouses, and change app data workflow behavior.
   requires_human_review: true

@@ -14,6 +14,7 @@ export interface RegistryIndexes {
   registry: unknown;
   skills: unknown;
   mcp: unknown;
+  agentPackages: unknown;
 }
 
 export const REGISTRY_OBJECT_ROOTS = ["skills", "mcp", "cli-tools", "workflows", "templates", "policies", "agent-packages"];
@@ -42,6 +43,8 @@ export async function buildIndexes(rootDir: string): Promise<RegistryIndexes> {
   const objects = await readAllRegistryObjects(rootDir);
   const skills = objects.filter((object) => object.kind === "skill");
   const agentPackages = objects.filter((object) => object.kind === "agent-package");
+  const cliTools = objects.filter((object) => object.kind === "cli-tool");
+  const workflows = objects.filter((object) => object.kind === "workflow");
   const mcpServers = objects
     .map((object) => mcpServerRegistryObjectSchema.safeParse(object))
     .filter((result): result is { success: true; data: McpServerRegistryObject } => result.success)
@@ -59,6 +62,8 @@ export async function buildIndexes(rootDir: string): Promise<RegistryIndexes> {
       mcp_servers: mcpServers.length,
       mcp_profiles: mcpProfiles.length,
       agent_packages: agentPackages.length,
+      cli_tools: cliTools.length,
+      workflows: workflows.length,
     },
     objects: objects.map((object) => ({
       id: object.id,
@@ -103,21 +108,34 @@ export async function buildIndexes(rootDir: string): Promise<RegistryIndexes> {
     })),
   };
 
+  const agentPackagesIndex = {
+    generated_at: registry.generated_at,
+    agent_packages: agentPackages.map((agentPackage) => ({
+      id: agentPackage.id,
+      name: agentPackage.name,
+      description: agentPackage.description,
+      tags: agentPackage.tags ?? [],
+      capabilities: agentPackage.capabilities ?? [],
+      requires: agentPackage.requires ?? {},
+      entrypoint: agentPackage.entrypoints?.prompt,
+      composition: agentPackage.metadata?.composition,
+      risk: agentPackage.risk,
+    })),
+  };
+
   await writeJsonFile(join(rootDir, "dist", "registry.index.json"), registry);
   await writeJsonFile(join(rootDir, "dist", "skills.index.json"), skillsIndex);
   await writeJsonFile(join(rootDir, "dist", "mcp.index.json"), mcpIndex);
+  await writeJsonFile(join(rootDir, "dist", "agent-packages.index.json"), agentPackagesIndex);
 
   if (!(await pathExists(join(rootDir, "dist", "agent-packages")))) {
     await writeJsonFile(join(rootDir, "dist", "agent-packages", ".keep.json"), {});
   }
 
-  return { registry, skills: skillsIndex, mcp: mcpIndex };
+  return { registry, skills: skillsIndex, mcp: mcpIndex, agentPackages: agentPackagesIndex };
 }
 
-function isMaterializedContentPath(file: string): boolean {
+export function isMaterializedContentPath(file: string): boolean {
   const segments = file.split(/[\\/]/);
-  return segments.some(
-    (segment, index) =>
-      segment === "skills" && segments[index + 1] === "imported" && segments[index + 2]?.startsWith("imported.") && segments[index + 3] === "content",
-  );
+  return segments.some((segment, index) => segment === "skills" && segments.slice(index + 1).includes("content"));
 }

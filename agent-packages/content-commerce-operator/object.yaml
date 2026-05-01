@@ -49,6 +49,8 @@ requires:
     - global.copy-writer
   tools:
     - cli.sanity
+    - cli.stripe
+    - cli.resend
     - cli.github
     - cli.turbo
   env:
@@ -57,9 +59,9 @@ requires:
     - STRIPE_WEBHOOK_SECRET
     - RESEND_API_KEY
 entrypoints:
-  prompt: agent-packages/content-commerce-operator/object.yaml
+  prompt: agent-packages/content-commerce-operator/AGENT.md
 risk:
   level: high
   reasons:
-    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+    - Can affect CMS content, billing flows, transactional email, and external customer communication.
   requires_human_review: true

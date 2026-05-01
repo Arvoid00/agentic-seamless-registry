@@ -26,7 +26,6 @@ metadata:
       - global.migration-handling
       - global.code-guidelines
       - global.create-commit
-      - imported.vercel-react-best-practices
     mcp_profile: profile.cursor-default
     mcp_servers:
       - mcp.context7
@@ -42,14 +41,13 @@ requires:
     - global.migration-handling
     - global.code-guidelines
     - global.create-commit
-    - imported.vercel-react-best-practices
   tools:
     - cli.github
     - cli.turbo
 entrypoints:
-  prompt: agent-packages/dependency-security-maintainer/object.yaml
+  prompt: agent-packages/dependency-security-maintainer/AGENT.md
 risk:
   level: high
   reasons:
-    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+    - Can affect dependency graph, security posture, and vulnerability suppression decisions.
   requires_human_review: true

@@ -53,9 +53,9 @@ requires:
   env:
     - SUPABASE_ACCESS_TOKEN
 entrypoints:
-  prompt: agent-packages/full-stack-feature-operator/object.yaml
+  prompt: agent-packages/full-stack-feature-operator/AGENT.md
 risk:
   level: medium
   reasons:
-    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+    - Can affect app behavior, schema assumptions, deployment readiness, and project documentation.
   requires_human_review: true

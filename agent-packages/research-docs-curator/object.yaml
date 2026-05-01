@@ -44,9 +44,9 @@ requires:
   tools:
     - cli.github
 entrypoints:
-  prompt: agent-packages/research-docs-curator/object.yaml
+  prompt: agent-packages/research-docs-curator/AGENT.md
 risk:
   level: low
   reasons:
-    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+    - Primarily read-only, but can still introduce documentation drift if sources are weak or overgeneralized.
   requires_human_review: false

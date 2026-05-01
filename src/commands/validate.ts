@@ -1,6 +1,6 @@
 import { join } from "node:path";
 import { loadConfig } from "../config.js";
-import { REGISTRY_OBJECT_ROOTS, readAllRegistryObjects } from "../index/build.js";
+import { REGISTRY_OBJECT_ROOTS, isMaterializedContentPath, readAllRegistryObjects } from "../index/build.js";
 import { registryObjectSchema } from "../types.js";
 import { readYamlFile, walkFiles } from "../utils/fs.js";
 
@@ -8,7 +8,9 @@ export async function validateCommand(rootDir: string): Promise<void> {
   await loadConfig(rootDir);
 
   const roots = REGISTRY_OBJECT_ROOTS.map((path) => join(rootDir, path));
-  const files = (await Promise.all(roots.map((root) => walkFiles(root)))).flat().filter((file) => /\.(ya?ml)$/.test(file));
+  const files = (await Promise.all(roots.map((root) => walkFiles(root))))
+    .flat()
+    .filter((file) => /\.(ya?ml)$/.test(file) && !isMaterializedContentPath(file));
   const errors: string[] = [];
 
   for (const file of files) {

@@ -48,15 +48,14 @@ requires:
     - global.migration-handling
   tools:
     - cli.supabase
-    - cli.turbo
   env:
     - SUPABASE_ACCESS_TOKEN
     - GOOGLE_CLIENT_ID
     - GOOGLE_CLIENT_SECRET
 entrypoints:
-  prompt: agent-packages/supabase-auth-operator/object.yaml
+  prompt: agent-packages/supabase-auth-operator/AGENT.md
 risk:
   level: high
   reasons:
-    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+    - Can affect auth redirects, email templates, migrations, and OAuth secrets across environments.
   requires_human_review: true

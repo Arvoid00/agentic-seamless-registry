@@ -1,0 +1,37 @@
+id: cli.databricks
+kind: cli-tool
+name: Databricks CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/databricks/object.yaml
+description: Databricks CLI registry entry for jobs, SQL warehouses, app resources, and workspace validation.
+tags:
+  - cli
+  - databricks
+capabilities:
+  - jobs-automation
+  - sql-warehouse-management
+  - workspace-validation
+metadata:
+  command: databricks
+  install: brew tap databricks/tap && brew install databricks or see https://docs.databricks.com/aws/en/dev-tools/cli/install
+  roadmap: docs/skill-agent-upgrade-checklist.md
+requires:
+  skills:
+    - app-specific.databricks
+  env:
+    - DATABRICKS_HOST
+    - DATABRICKS_CLIENT_ID
+    - DATABRICKS_CLIENT_SECRET
+entrypoints:
+  command: databricks
+risk:
+  level: high
+  reasons:
+    - Can run jobs, query warehouses, and affect paid data-platform resources.
+  requires_human_review: true

@@ -48,9 +48,9 @@ requires:
     - cli.github
     - cli.turbo
 entrypoints:
-  prompt: agent-packages/release-readiness-coordinator/object.yaml
+  prompt: agent-packages/release-readiness-coordinator/AGENT.md
 risk:
   level: medium
   reasons:
-    - Composes multiple skills, MCP servers, and CLI invocations; verify scopes and env before autonomous use.
+    - Can publish release communication and must verify CI, rollback, and deployment evidence before release actions.
   requires_human_review: true
