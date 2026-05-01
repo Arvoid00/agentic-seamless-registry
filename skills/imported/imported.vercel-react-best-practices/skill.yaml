@@ -1,0 +1,35 @@
+id: imported.vercel-react-best-practices
+kind: skill
+name: vercel-react-best-practices
+scope: external
+version: 1.0.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/vercel-react-best-practices/SKILL.md
+  upstream_url: https://github.com/vercel-labs/agent-skills
+  imported_at: null
+description: React and Next.js performance optimization guidelines from Vercel Engineering. This
+  skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal
+  performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching,
+  bundle optimization, or performance improvements.
+tags:
+  - best
+  - github
+  - imported
+  - practices
+  - react
+  - skill-md
+  - vercel
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  upstream_source: vercel-labs/agent-skills
+  upstream_source_type: github
+  upstream_hash: 3462ec83f862abb2d532953df33a4dbf87f4616849da5d4b5cc7c13601aaf997
+  frontmatter_metadata:
+    author: vercel
+    version: 1.0.0
+entrypoints:
+  prompt: ../seamless-agent-os/.agents/skills/vercel-react-best-practices/SKILL.md

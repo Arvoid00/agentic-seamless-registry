@@ -1,0 +1,33 @@
+id: imported.deploy-to-vercel
+kind: skill
+name: deploy-to-vercel
+scope: external
+version: 3.0.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/deploy-to-vercel/SKILL.md
+  upstream_url: https://github.com/vercel-labs/agent-skills
+  imported_at: null
+description: Deploy applications and websites to Vercel. Use when the user requests deployment
+  actions like "deploy my app", "deploy and give me the link", "push this live", or "create a
+  preview deployment".
+tags:
+  - deploy
+  - github
+  - imported
+  - skill-md
+  - to
+  - vercel
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  upstream_source: vercel-labs/agent-skills
+  upstream_source_type: github
+  upstream_hash: d2b5bcc7c09fdb649129ffc7dd7b647ec1b155736974b974292675afd588cb39
+  frontmatter_metadata:
+    author: vercel
+    version: 3.0.0
+entrypoints:
+  prompt: ../seamless-agent-os/.agents/skills/deploy-to-vercel/SKILL.md

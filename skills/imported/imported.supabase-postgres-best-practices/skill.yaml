@@ -1,0 +1,40 @@
+id: imported.supabase-postgres-best-practices
+kind: skill
+name: supabase-postgres-best-practices
+scope: external
+version: 1.1.1
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/supabase-postgres-best-practices/SKILL.md
+  upstream_url: https://github.com/supabase/agent-skills
+  imported_at: null
+description: Postgres performance optimization and best practices from Supabase. Use this skill when
+  writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.
+tags:
+  - best
+  - github
+  - imported
+  - postgres
+  - practices
+  - skill-md
+  - supabase
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  upstream_source: supabase/agent-skills
+  upstream_source_type: github
+  upstream_hash: f4cd7570115d97af6bcb2946eb891a958c8d04a43b479871c9ccadbc670ad058
+  frontmatter_metadata:
+    author: supabase
+    version: 1.1.1
+    organization: Supabase
+    date: January 2026
+    abstract: Comprehensive Postgres performance optimization guide for developers using Supabase and
+      Postgres. Contains performance rules across 8 categories, prioritized by impact from critical
+      (query performance, connection management) to incremental (advanced features). Each rule
+      includes detailed explanations, incorrect vs. correct SQL examples, query plan analysis, and
+      specific performance metrics to guide automated optimization and code generation.
+entrypoints:
+  prompt: ../seamless-agent-os/.agents/skills/supabase-postgres-best-practices/SKILL.md

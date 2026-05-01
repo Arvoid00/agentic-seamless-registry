@@ -1,0 +1,34 @@
+id: imported.supabase
+kind: skill
+name: supabase
+scope: external
+version: 0.1.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/supabase/SKILL.md
+  upstream_url: https://github.com/supabase/agent-skills
+  imported_at: null
+description: "Use when doing ANY task involving Supabase. Triggers: Supabase products (Database,
+  Auth, Edge Functions, Realtime, Storage, Vectors, Cron, Queues); client libraries and SSR
+  integrations (supabase-js, @supabase/ssr) in Next.js, React, SvelteKit, Astro, Remix; auth issues
+  (login, logout, sessions, JWT, cookies, getSession, getUser, getClaims, RLS); Supabase CLI or MCP
+  server; schema changes, migrations, security audits, Postgres extensions (pg_graphql, pg_cron,
+  pg_vector)."
+tags:
+  - github
+  - imported
+  - skill-md
+  - supabase
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  upstream_source: supabase/agent-skills
+  upstream_source_type: github
+  upstream_hash: cb675a889c60172febe84740e7c22b600c8241c390deaff3d368c408f10dffdf
+  frontmatter_metadata:
+    author: supabase
+    version: 0.1.0
+entrypoints:
+  prompt: ../seamless-agent-os/.agents/skills/supabase/SKILL.md

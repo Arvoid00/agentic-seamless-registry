@@ -1,0 +1,31 @@
+id: imported.next-best-practices
+kind: skill
+name: next-best-practices
+scope: external
+version: 0.1.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/next-best-practices/SKILL.md
+  upstream_url: https://github.com/vercel-labs/next-skills
+  imported_at: null
+description: Next.js best practices - file conventions, RSC boundaries, data patterns, async APIs,
+  metadata, error handling, route handlers, image/font optimization, bundling
+tags:
+  - best
+  - github
+  - imported
+  - next
+  - practices
+  - skill-md
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  user_invocable: false
+  upstream_source: vercel-labs/next-skills
+  upstream_source_type: github
+  upstream_hash: 515ba75178bd44875812d9a560bdf14651f86709f89cf1d4f209638e879807f3
+  frontmatter_metadata: {}
+entrypoints:
+  prompt: ../seamless-agent-os/.agents/skills/next-best-practices/SKILL.md

@@ -1,0 +1,37 @@
+id: imported.shadcn-ui
+kind: skill
+name: shadcn-ui
+scope: external
+version: 0.1.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/shadcn-ui/SKILL.md
+  upstream_url: https://github.com/google-labs-code/stitch-skills
+  imported_at: null
+description: Expert guidance for integrating and building applications with shadcn/ui components,
+  including component discovery, installation, customization, and best practices.
+tags:
+  - github
+  - imported
+  - shadcn
+  - skill-md
+  - ui
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  upstream_source: google-labs-code/stitch-skills
+  upstream_source_type: github
+  upstream_hash: dadbca54d35a33fe73e40018611af2179689305bf6da812ab2643987fefd9da3
+  frontmatter_metadata: {}
+requires:
+  tools:
+    - shadcn*:*
+    - mcp_shadcn*
+    - Read
+    - Write
+    - Bash
+    - web_fetch
+entrypoints:
+  prompt: ../seamless-agent-os/.agents/skills/shadcn-ui/SKILL.md
