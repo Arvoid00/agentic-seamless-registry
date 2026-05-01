@@ -1,0 +1,26 @@
+id: global.start-project
+kind: skill
+name: Start Project
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/start-project/skill.yaml
+description: Plan and bootstrap a new project with repo conventions, setup checks, and a concise
+  first milestone.
+tags:
+  - planning
+  - bootstrap
+capabilities:
+  - project-scoping
+  - setup-checklists
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/start-project/content/SKILL.md

@@ -1,0 +1,36 @@
+id: cli.supabase
+kind: cli-tool
+name: Supabase CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/supabase/object.yaml
+description: Supabase CLI registry entry for agent workflows and setup checklists.
+tags:
+  - cli
+  - supabase
+capabilities:
+  - command-reference
+  - setup-guidance
+metadata:
+  command: supabase
+  install: brew install supabase/tap/supabase or npm install -g supabase
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: cli
+requires:
+  skills:
+    - imported.supabase
+    - global.supabase-init-start
+  env:
+    - SUPABASE_ACCESS_TOKEN
+entrypoints:
+  command: supabase
+risk:
+  level: medium
+  reasons:
+    - Requires authenticated CLI context for some operations.
+  requires_human_review: true

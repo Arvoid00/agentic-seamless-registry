@@ -1,0 +1,25 @@
+id: global.stripe
+kind: skill
+name: Stripe
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/stripe/skill.yaml
+description: Implement Stripe billing, checkout, webhooks, and customer portal flows.
+tags:
+  - stripe
+  - billing
+capabilities:
+  - checkout-flow
+  - webhook-handling
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/stripe/content/SKILL.md

@@ -1,0 +1,26 @@
+id: global.monorepo-style-app-package-creation
+kind: skill
+name: Monorepo Style App Package Creation
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/monorepo-style-app-package-creation/skill.yaml
+description: Create apps and packages that match a pnpm/Turborepo monorepo style.
+tags:
+  - monorepo
+  - pnpm
+  - turborepo
+capabilities:
+  - workspace-setup
+  - package-exports
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/monorepo-style-app-package-creation/content/SKILL.md

@@ -1,0 +1,36 @@
+id: cli.github
+kind: cli-tool
+name: GitHub CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/github/object.yaml
+description: GitHub CLI registry entry for agent workflows and setup checklists.
+tags:
+  - cli
+  - github
+capabilities:
+  - command-reference
+  - setup-guidance
+metadata:
+  command: gh
+  install: brew install gh or use the GitHub CLI installer.
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: cli
+requires:
+  skills:
+    - global.create-commit
+    - global.user-facing-changelog
+  env:
+    - GH_TOKEN
+entrypoints:
+  command: gh
+risk:
+  level: medium
+  reasons:
+    - Requires authenticated CLI context for some operations.
+  requires_human_review: true

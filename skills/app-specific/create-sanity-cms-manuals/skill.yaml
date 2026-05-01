@@ -1,0 +1,26 @@
+id: app-specific.create-sanity-cms-manuals
+kind: skill
+name: Create Sanity CMS Manuals
+scope: app-specific
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/app-specific/create-sanity-cms-manuals/skill.yaml
+description: Create app-specific Sanity CMS manuals for editors, content operations, schemas,
+  previews, and publishing workflows.
+tags:
+  - app-specific
+  - sanity
+capabilities:
+  - editor-documentation
+  - cms-workflows
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: app-specific-skills
+requires: {}
+entrypoints:
+  prompt: skills/app-specific/create-sanity-cms-manuals/content/SKILL.md

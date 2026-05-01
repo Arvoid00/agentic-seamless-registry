@@ -1,0 +1,26 @@
+id: global.metadata-favicons
+kind: skill
+name: Metadata Favicons
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/metadata-favicons/skill.yaml
+description: Configure web app metadata, icons, favicons, Open Graph, and social previews.
+tags:
+  - metadata
+  - favicons
+  - seo
+capabilities:
+  - next-metadata
+  - social-previews
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/metadata-favicons/content/SKILL.md

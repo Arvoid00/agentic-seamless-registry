@@ -1,0 +1,46 @@
+id: mcp.context7
+kind: mcp-server
+name: Context7 MCP Server
+scope: global
+version: 0.1.0
+status: draft
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: mcp/servers/context7/server.yaml
+description: Context7 MCP Server configuration placeholder for the Cursor MCP profile. Review
+  package identity and environment requirements before live use.
+tags:
+  - mcp
+  - context7
+capabilities:
+  - library-docs
+  - api-reference
+server:
+  transport: stdio
+  command: npx
+  args:
+    - -y
+    - "@upstash/context7-mcp@latest"
+env:
+  required: []
+  optional: []
+used_by:
+  skills:
+    - global.research-prompts
+    - global.code-guidelines
+  profiles:
+    - profile.cursor-default
+security:
+  review_required: true
+  reason: Draft MCP server entry. Verify package identity, scopes, and tokens before live use.
+risk:
+  level: medium
+  reasons:
+    - Executes an MCP server package through npx.
+  requires_human_review: true
+metadata:
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: mcp
+  verify_before_export: true

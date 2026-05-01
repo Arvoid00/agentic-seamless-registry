@@ -1,0 +1,34 @@
+id: cli.turbo
+kind: cli-tool
+name: Turbo CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/turbo/object.yaml
+description: Turbo CLI registry entry for agent workflows and setup checklists.
+tags:
+  - cli
+  - turbo
+capabilities:
+  - command-reference
+  - setup-guidance
+metadata:
+  command: turbo
+  install: Use the workspace package manager, usually pnpm dlx turbo or a local turbo dependency.
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: cli
+requires:
+  skills:
+    - global.monorepo-style-app-package-creation
+  env: []
+entrypoints:
+  command: turbo
+risk:
+  level: low
+  reasons:
+    - Local developer command with no required secret by default.
+  requires_human_review: false

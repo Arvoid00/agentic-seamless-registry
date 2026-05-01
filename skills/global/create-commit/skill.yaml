@@ -1,0 +1,26 @@
+id: global.create-commit
+kind: skill
+name: Create Commit
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/create-commit/skill.yaml
+description: Prepare a focused git commit by reviewing diffs, selecting relevant files, and writing
+  a concise message.
+tags:
+  - git
+  - commit
+capabilities:
+  - diff-review
+  - commit-message
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/create-commit/content/SKILL.md

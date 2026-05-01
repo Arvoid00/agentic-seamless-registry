@@ -1,0 +1,35 @@
+id: cli.shadcn
+kind: cli-tool
+name: shadcn CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/shadcn/object.yaml
+description: shadcn CLI registry entry for agent workflows and setup checklists.
+tags:
+  - cli
+  - shadcn
+capabilities:
+  - command-reference
+  - setup-guidance
+metadata:
+  command: shadcn
+  install: pnpm dlx shadcn@latest
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: cli
+requires:
+  skills:
+    - imported.shadcn-ui
+    - global.pixel-perfect-ui
+  env: []
+entrypoints:
+  command: shadcn
+risk:
+  level: low
+  reasons:
+    - Local developer command with no required secret by default.
+  requires_human_review: false

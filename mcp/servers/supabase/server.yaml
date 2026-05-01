@@ -1,0 +1,49 @@
+id: mcp.supabase
+kind: mcp-server
+name: Supabase MCP Server
+scope: global
+version: 0.1.0
+status: draft
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: mcp/servers/supabase/server.yaml
+description: Supabase MCP Server configuration placeholder for the Cursor MCP profile. Review
+  package identity and environment requirements before live use.
+tags:
+  - mcp
+  - supabase
+capabilities:
+  - supabase-management
+  - database-context
+server:
+  transport: stdio
+  command: npx
+  args:
+    - -y
+    - "@supabase/mcp-server-supabase@latest"
+env:
+  required:
+    - SUPABASE_ACCESS_TOKEN
+  optional: []
+used_by:
+  skills:
+    - imported.supabase
+    - global.supabase-init-start
+    - global.supabase-auth-template-update
+  profiles:
+    - profile.cursor-default
+security:
+  review_required: true
+  reason: Draft MCP server entry. Verify package identity, scopes, and tokens before live use.
+risk:
+  level: high
+  reasons:
+    - Requires external service token.
+    - Executes an MCP server package through npx.
+  requires_human_review: true
+metadata:
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: mcp
+  verify_before_export: true

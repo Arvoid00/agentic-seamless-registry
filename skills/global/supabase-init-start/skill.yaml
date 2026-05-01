@@ -1,0 +1,29 @@
+id: global.supabase-init-start
+kind: skill
+name: Supabase Init Start
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/supabase-init-start/skill.yaml
+description: Initialize and start local Supabase development safely, including config, ports, and
+  migration application.
+tags:
+  - supabase
+  - local-dev
+capabilities:
+  - supabase-cli-setup
+  - local-db
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires:
+  skills:
+    - imported.supabase
+    - imported.supabase-postgres-best-practices
+entrypoints:
+  prompt: skills/global/supabase-init-start/content/SKILL.md

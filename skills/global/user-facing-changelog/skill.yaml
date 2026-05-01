@@ -1,0 +1,25 @@
+id: global.user-facing-changelog
+kind: skill
+name: User Facing Changelog
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/user-facing-changelog/skill.yaml
+description: Write user-facing changelog entries from code changes, PRs, or release notes.
+tags:
+  - changelog
+  - release-notes
+capabilities:
+  - change-synthesis
+  - user-copy
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/user-facing-changelog/content/SKILL.md

@@ -1,0 +1,26 @@
+id: app-specific.create-practitioner-profile
+kind: skill
+name: Create Practitioner Profile
+scope: app-specific
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/app-specific/create-practitioner-profile/skill.yaml
+description: Create or update practitioner profile workflows with app-specific fields, validation,
+  onboarding, and profile completeness rules.
+tags:
+  - app-specific
+  - profiles
+capabilities:
+  - profile-workflow
+  - validation-design
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: app-specific-skills
+requires: {}
+entrypoints:
+  prompt: skills/app-specific/create-practitioner-profile/content/SKILL.md

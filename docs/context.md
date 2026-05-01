@@ -36,3 +36,9 @@
 - Implement GitHub ingestion by downloading or cloning a configured repo ref into `sources/github/<source-id>`.
 - Add profile-aware MCP exports for Claude Desktop, Codex, and OpenClaw.
 - Add richer conflict review output with side-by-side normalized YAML diffs.
+
+## Skill Asset Roadmap
+
+- Added `docs/skill-assets-roadmap.md` as the canonical checklist for image-derived CLI, MCP, global skill, app-specific skill, hook, and subagent assets.
+- Local skills now use canonical registry YAML plus Cursor/Claude compatible `content/SKILL.md` entrypoints.
+- Draft MCP server entries require review before relying on exported Cursor MCP configuration.

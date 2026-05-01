@@ -1,0 +1,25 @@
+id: global.documentation-updates-drift
+kind: skill
+name: Documentation Updates Drift
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/documentation-updates-drift/skill.yaml
+description: Detect and update documentation that may drift from code, configuration, or product behavior.
+tags:
+  - docs
+  - drift
+capabilities:
+  - docs-audit
+  - change-impact-analysis
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/documentation-updates-drift/content/SKILL.md

@@ -1,0 +1,26 @@
+id: global.react-email-creation
+kind: skill
+name: React Email Creation
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/react-email-creation/skill.yaml
+description: Create transactional email templates with React Email patterns, preview states, and
+  provider-ready payloads.
+tags:
+  - email
+  - react-email
+capabilities:
+  - email-template-design
+  - preview-states
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/react-email-creation/content/SKILL.md

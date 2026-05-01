@@ -1,0 +1,29 @@
+id: global.pixel-perfect-ui
+kind: skill
+name: Pixel Perfect UI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/pixel-perfect-ui/skill.yaml
+description: Implement high-fidelity UI with design tokens, accessible states, and visual polish.
+tags:
+  - ui
+  - tailwind
+  - accessibility
+capabilities:
+  - visual-implementation
+  - responsive-layout
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires:
+  skills:
+    - imported.shadcn-ui
+    - imported.vercel-react-best-practices
+entrypoints:
+  prompt: skills/global/pixel-perfect-ui/content/SKILL.md

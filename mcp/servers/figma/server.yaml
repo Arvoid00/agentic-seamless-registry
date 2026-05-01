@@ -1,0 +1,50 @@
+id: mcp.figma
+kind: mcp-server
+name: Figma MCP Server
+scope: global
+version: 0.1.0
+status: draft
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: mcp/servers/figma/server.yaml
+description: Figma MCP Server configuration placeholder for the Cursor MCP profile. Review package
+  identity and environment requirements before live use.
+tags:
+  - mcp
+  - figma
+capabilities:
+  - design-inspection
+  - figma-context
+server:
+  transport: stdio
+  command: npx
+  args:
+    - -y
+    - figma-developer-mcp
+    - --stdio
+env:
+  required:
+    - FIGMA_API_KEY
+  optional: []
+used_by:
+  skills:
+    - global.pixel-perfect-ui
+    - global.front-end-design
+    - global.ui-ux-review
+  profiles:
+    - profile.cursor-default
+security:
+  review_required: true
+  reason: Draft MCP server entry. Verify package identity, scopes, and tokens before live use.
+risk:
+  level: high
+  reasons:
+    - Requires external service token.
+    - Executes an MCP server package through npx.
+  requires_human_review: true
+metadata:
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: mcp
+  verify_before_export: true

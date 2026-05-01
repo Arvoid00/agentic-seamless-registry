@@ -1,0 +1,49 @@
+id: mcp.21st-dev
+kind: mcp-server
+name: 21st Dev MCP Server
+scope: global
+version: 0.1.0
+status: draft
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: mcp/servers/21st-dev/server.yaml
+description: 21st Dev MCP Server configuration placeholder for the Cursor MCP profile. Review
+  package identity and environment requirements before live use.
+tags:
+  - mcp
+  - 21st-dev
+capabilities:
+  - ui-generation
+  - component-discovery
+server:
+  transport: stdio
+  command: npx
+  args:
+    - -y
+    - "@21st-dev/magic@latest"
+    - mcp
+env:
+  required:
+    - TWENTY_FIRST_API_KEY
+  optional: []
+used_by:
+  skills:
+    - global.pixel-perfect-ui
+    - global.front-end-design
+  profiles:
+    - profile.cursor-default
+security:
+  review_required: true
+  reason: Draft MCP server entry. Verify package identity, scopes, and tokens before live use.
+risk:
+  level: high
+  reasons:
+    - Requires external service token.
+    - Executes an MCP server package through npx.
+  requires_human_review: true
+metadata:
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: mcp
+  verify_before_export: true

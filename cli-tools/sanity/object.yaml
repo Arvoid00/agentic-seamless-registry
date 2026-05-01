@@ -1,0 +1,36 @@
+id: cli.sanity
+kind: cli-tool
+name: Sanity CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/sanity/object.yaml
+description: Sanity CLI registry entry for agent workflows and setup checklists.
+tags:
+  - cli
+  - sanity
+capabilities:
+  - command-reference
+  - setup-guidance
+metadata:
+  command: sanity
+  install: npm create sanity@latest or npm install -g sanity
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: cli
+requires:
+  skills:
+    - global.sanity
+    - app-specific.create-sanity-cms-manuals
+  env:
+    - SANITY_AUTH_TOKEN
+entrypoints:
+  command: sanity
+risk:
+  level: medium
+  reasons:
+    - Requires authenticated CLI context for some operations.
+  requires_human_review: false
