@@ -1,0 +1,23 @@
+id: profile.cursor-default
+kind: mcp-profile
+name: Cursor Default MCP Profile
+scope: global
+version: 0.1.0
+status: active
+
+source:
+  origin: local
+  source_id: seamless-local-skills
+  source_path: mcp/profiles/cursor-default.yaml
+  imported_at: null
+
+servers:
+  include: []
+  exclude: []
+
+env_policy:
+  require_explicit_env_mapping: true
+  block_inline_secret_values: true
+
+export_targets:
+  - cursor

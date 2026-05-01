@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://seamless.internal/schemas/agentic-registry-object.json",
+  "title": "Agentic Seamless Registry Object",
+  "type": "object",
+  "required": ["id", "kind", "name", "scope", "version", "status", "source"],
+  "additionalProperties": true,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "skill",
+        "mcp-server",
+        "cli-tool",
+        "workflow",
+        "prompt",
+        "template",
+        "policy",
+        "agent-package",
+        "mcp-profile"
+      ]
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "scope": {
+      "type": "string",
+      "enum": ["global", "app-specific", "local", "external"]
+    },
+    "version": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"]
+    },
+    "source": {
+      "type": "object",
+      "required": ["origin", "source_id"],
+      "properties": {
+        "origin": { "type": "string", "enum": ["local", "imported", "generated"] },
+        "source_id": { "type": "string" },
+        "source_path": { "type": "string" },
+        "upstream_url": { "type": "string" },
+        "upstream_ref": { "type": "string" },
+        "imported_at": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+sources/*/*.raw.json
+sources/*/*.raw.yaml
+!sources/.gitkeep
+!sources/**/.gitkeep

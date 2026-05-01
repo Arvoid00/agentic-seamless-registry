@@ -1,0 +1,88 @@
+name: agentic-seamless-registry
+version: 0.1.0
+
+defaults:
+  owner: seamless
+  license: internal
+  visibility: private
+  target_format_version: 1
+
+sources:
+  - id: seamless-local-skills
+    type: filesystem
+    enabled: true
+    path: ./skills
+    mode: canonical
+    ingest:
+      skills: true
+
+  - id: cursor-mcp-config
+    type: cursor
+    enabled: true
+    path: ~/.cursor/mcp.json
+    ingest:
+      mcp: true
+
+  - id: seamless-agent-os
+    type: filesystem
+    enabled: true
+    path: ../seamless-agent-os
+    mode: vercel-skills
+    ingest:
+      skills_md: true
+      skills_lock: true
+      policies: true
+      templates: true
+      workflows: true
+
+  - id: claude-desktop-mcp-config
+    type: claude-desktop
+    enabled: false
+    path: ~/Library/Application Support/Claude/claude_desktop_config.json
+    ingest:
+      mcp: true
+
+  - id: external-github-skills
+    type: github
+    enabled: false
+    repo: some-org/some-skills-repo
+    ref: main
+    paths:
+      - skills
+      - mcp
+    ingest:
+      skills: true
+      mcp: true
+      prompts: true
+
+  - id: notion-agent-os
+    type: notion
+    enabled: false
+    database_id: NOTION_DATABASE_ID
+    ingest:
+      docs: true
+      skills: true
+
+output:
+  normalized_dir: .
+  raw_sources_dir: ./sources
+  index_dir: ./dist
+
+conflicts:
+  strategy: prefer-local
+  external_prefix: imported
+  identity_fields:
+    - id
+    - kind
+
+security:
+  require_review_for:
+    - mcp.servers
+    - executable.commands
+    - env.vars
+  block_secret_values: true
+  allowed_mcp_command_roots:
+    - npx
+    - uvx
+    - node
+    - bunx

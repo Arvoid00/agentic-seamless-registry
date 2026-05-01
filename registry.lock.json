@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "sources": {
+    "cursor-mcp-config": {
+      "type": "cursor",
+      "path": "~/.cursor/mcp.json",
+      "last_ingested_at": "2026-05-01T12:54:18.821Z",
+      "objects": []
+    },
+    "seamless-agent-os": {
+      "type": "filesystem",
+      "path": "../seamless-agent-os",
+      "last_ingested_at": "2026-05-01T13:06:03.619Z",
+      "objects": [
+        {
+          "id": "imported.deploy-to-vercel",
+          "kind": "skill",
+          "path": "skills/imported/imported.deploy-to-vercel/skill.yaml",
+          "hash": "sha256-8fb74335e6cb12886f48c0503c962c0c65a57768cc0c60ebdaf1ecbdf977c146"
+        },
+        {
+          "id": "imported.next-best-practices",
+          "kind": "skill",
+          "path": "skills/imported/imported.next-best-practices/skill.yaml",
+          "hash": "sha256-05f4da9d6864e4619672736abd677af02c594250d4a3e593bfaf96d2f2319872"
+        },
+        {
+          "id": "imported.shadcn-ui",
+          "kind": "skill",
+          "path": "skills/imported/imported.shadcn-ui/skill.yaml",
+          "hash": "sha256-ceb032c6df237177582485434a21465f99346e0484e972cca780095baa6903e3"
+        },
+        {
+          "id": "imported.supabase-postgres-best-practices",
+          "kind": "skill",
+          "path": "skills/imported/imported.supabase-postgres-best-practices/skill.yaml",
+          "hash": "sha256-bf8cefd99a703f739df0b89774da96d88099b7812889b025cdf18b80938f6f2d"
+        },
+        {
+          "id": "imported.supabase",
+          "kind": "skill",
+          "path": "skills/imported/imported.supabase/skill.yaml",
+          "hash": "sha256-bd65b246ef085c53bad330c0d9ba9c03dab927ce56e7c56a2f14e5397551db52"
+        },
+        {
+          "id": "imported.vercel-react-best-practices",
+          "kind": "skill",
+          "path": "skills/imported/imported.vercel-react-best-practices/skill.yaml",
+          "hash": "sha256-918dd91b1a282d49190482dc90a9818519d50dfa47f92f5ecdbfd5ea81e728ac"
+        }
+      ]
+    }
+  }
+}
