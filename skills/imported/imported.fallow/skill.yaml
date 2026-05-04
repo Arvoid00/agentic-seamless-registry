@@ -1,0 +1,41 @@
+id: imported.fallow
+kind: skill
+name: fallow
+scope: external
+version: 1.0.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/fallow/SKILL.md
+  upstream_url: https://github.com/fallow-rs/fallow-skills
+  imported_at: null
+description: Codebase intelligence for JavaScript and TypeScript. Free static layer finds unused
+  code (files, exports, types, dependencies), code duplication, circular dependencies, complexity
+  hotspots, architecture boundary violations, and feature flag patterns. Runtime coverage merges
+  production execution data into the same health report for hot-path review, cold-path deletion
+  confidence, and stale-flag evidence - a single local capture is free, while continuous/cloud
+  runtime monitoring is paid. 93 framework plugins, zero configuration, sub-second static analysis.
+  Use when asked to analyze code health, find unused code, detect duplicates, check circular
+  dependencies, audit complexity, check architecture boundaries, detect feature flags, clean up the
+  codebase, auto-fix issues, merge runtime coverage, or run fallow.
+tags:
+  - fallow
+  - github
+  - imported
+  - skill-md
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  upstream_source: fallow-rs/fallow-skills
+  upstream_source_type: github
+  upstream_hash: 884eb5ce3811b49fae3b2806d191ac0d7a282dab3bf46b1d40e4b53821c7d477
+  frontmatter_metadata:
+    author: Bart Waardenburg
+    version: 1.0.0
+    homepage: https://docs.fallow.tools
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/fallow/SKILL.md
+  materialized_dir: skills/imported/imported.fallow/content
+entrypoints:
+  prompt: skills/imported/imported.fallow/content/SKILL.md

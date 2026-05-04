@@ -26,11 +26,13 @@ metadata:
       - global.migration-handling
       - global.code-guidelines
       - global.create-commit
+      - imported.fallow
     mcp_profile: profile.cursor-default
     mcp_servers:
       - mcp.context7
     cli_invocations:
       - npx --yes --package renovate -- renovate-config-validator --strict
+      - fallow dead-code <dependency-scope>
       - gh pr checks --watch --required
       - turbo query affected --packages
   usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
@@ -41,7 +43,9 @@ requires:
     - global.migration-handling
     - global.code-guidelines
     - global.create-commit
+    - imported.fallow
   tools:
+    - cli.fallow
     - cli.github
     - cli.turbo
 entrypoints:

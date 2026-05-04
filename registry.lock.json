@@ -10,7 +10,7 @@
     "seamless-agent-os": {
       "type": "filesystem",
       "path": "../seamless-agent-os",
-      "last_ingested_at": "2026-05-01T13:36:41.476Z",
+      "last_ingested_at": "2026-05-04T09:11:12.292Z",
       "objects": [
         {
           "id": "imported.deploy-to-vercel",
@@ -19,10 +19,22 @@
           "hash": "sha256-3c60960784feb599ece2d67042a9494af0e2d54dd25c7cb15db651a5e572e112"
         },
         {
+          "id": "imported.fallow",
+          "kind": "skill",
+          "path": "skills/imported/imported.fallow/skill.yaml",
+          "hash": "sha256-f4387893a02e3f4615e33f68d081649daeeb2c40f28b20648ed85bc7412a04b9"
+        },
+        {
           "id": "imported.next-best-practices",
           "kind": "skill",
           "path": "skills/imported/imported.next-best-practices/skill.yaml",
           "hash": "sha256-3e347b3c1870c8ac4d8f5748ee9e82d245d7194ad33b54067e7c71e68faa72fa"
+        },
+        {
+          "id": "imported.seamless-feature-architecture",
+          "kind": "skill",
+          "path": "skills/imported/imported.seamless-feature-architecture/skill.yaml",
+          "hash": "sha256-274625d968775e641a0226900b4880a5f69e94d82dab15ef969268116db0c377"
         },
         {
           "id": "imported.shadcn-ui",
@@ -53,8 +65,182 @@
     "seamless-local-skills": {
       "type": "filesystem",
       "path": "./skills",
-      "last_ingested_at": "2026-05-01T13:36:40.779Z",
+      "last_ingested_at": "2026-05-04T09:13:01.873Z",
       "objects": [
+        {
+          "id": "app-specific.create-practitioner-profile",
+          "kind": "skill",
+          "path": "skills/app-specific/create-practitioner-profile/skill.yaml",
+          "hash": "sha256-9c84cbd0f6dbf9d508c64ada0c8d50ee49312d8f999e78302db60cdc788c0758"
+        },
+        {
+          "id": "app-specific.create-sanity-cms-manuals",
+          "kind": "skill",
+          "path": "skills/app-specific/create-sanity-cms-manuals/skill.yaml",
+          "hash": "sha256-75d2ba59f0ea608d923e6d733d7627315c8e4efe61a1af64e92c80600457070f"
+        },
+        {
+          "id": "app-specific.databricks",
+          "kind": "skill",
+          "path": "skills/app-specific/databricks/skill.yaml",
+          "hash": "sha256-efb34f178816a0ddbba1bc4d9378c94f84e48715b75302a21fc65bbfbbcfe819"
+        },
+        {
+          "id": "app-specific.partner-onboarding",
+          "kind": "skill",
+          "path": "skills/app-specific/partner-onboarding/skill.yaml",
+          "hash": "sha256-853b5e96409b2bdd88ab1e27143d4ecab0ed57d63840836095a2ebcc1b9601f2"
+        },
+        {
+          "id": "global.code-guidelines",
+          "kind": "skill",
+          "path": "skills/global/code-guidelines/skill.yaml",
+          "hash": "sha256-0fed4e9609b0d987f80e333a96aa7167232a74adcf043b701ad908bb8edcee02"
+        },
+        {
+          "id": "global.copy-writer",
+          "kind": "skill",
+          "path": "skills/global/copy-writer/skill.yaml",
+          "hash": "sha256-73c196d216e92a4169c41c0fe3641319d4a04fdfea73907f3a68df7df8dda3d5"
+        },
+        {
+          "id": "global.create-commit",
+          "kind": "skill",
+          "path": "skills/global/create-commit/skill.yaml",
+          "hash": "sha256-7a71d11fffd3368d47e09355f78e442c48ff39af695578e62a5d6f355cfe501c"
+        },
+        {
+          "id": "global.create-deployment-checklist",
+          "kind": "skill",
+          "path": "skills/global/create-deployment-checklist/skill.yaml",
+          "hash": "sha256-886734050f5c69ef91cc4b439059936989cb7bdad7830097544d145e3d8b49ad"
+        },
+        {
+          "id": "global.create-translations",
+          "kind": "skill",
+          "path": "skills/global/create-translations/skill.yaml",
+          "hash": "sha256-7ffa93ee4ca117ba22733ceb9e445d564acf5ee3643ef87c063e479bc5c75117"
+        },
+        {
+          "id": "global.documentation-updates-drift",
+          "kind": "skill",
+          "path": "skills/global/documentation-updates-drift/skill.yaml",
+          "hash": "sha256-12c5b0114fceace1f89d791a25b9661b682fd9d6c720c4af9ecbb542301831ff"
+        },
+        {
+          "id": "global.e2e-create-run",
+          "kind": "skill",
+          "path": "skills/global/e2e-create-run/skill.yaml",
+          "hash": "sha256-0ca3ff61b63efbc1553420f71c837c2ecef0b614445646da1ffb10b4d6985af7"
+        },
+        {
+          "id": "global.feature-builder",
+          "kind": "skill",
+          "path": "skills/global/feature-builder/skill.yaml",
+          "hash": "sha256-089a8a50e5e6f75e43384714a410a91258f2751ccff10a0fbced29ccc0cd406b"
+        },
+        {
+          "id": "global.front-end-design",
+          "kind": "skill",
+          "path": "skills/global/front-end-design/skill.yaml",
+          "hash": "sha256-d23ea96ae9ca93ea899f3afef993e4efbde6bdf6441c184cc0618a33b7a62108"
+        },
+        {
+          "id": "global.metadata-favicons",
+          "kind": "skill",
+          "path": "skills/global/metadata-favicons/skill.yaml",
+          "hash": "sha256-b09919502ada2481718917a67bc90755ad5faeac1cc96cb6968ae51207627cc3"
+        },
+        {
+          "id": "global.migration-handling",
+          "kind": "skill",
+          "path": "skills/global/migration-handling/skill.yaml",
+          "hash": "sha256-824f648fc561b12d5e269addfe455b528f0e1e6823998ae37312ebddb3daf202"
+        },
+        {
+          "id": "global.monorepo-style-app-package-creation",
+          "kind": "skill",
+          "path": "skills/global/monorepo-style-app-package-creation/skill.yaml",
+          "hash": "sha256-e5cfdfb4c8db3140531bf388da8d8a316200749c87df83beda3f510345d87492"
+        },
+        {
+          "id": "global.pixel-perfect-ui",
+          "kind": "skill",
+          "path": "skills/global/pixel-perfect-ui/skill.yaml",
+          "hash": "sha256-38c19ab4eb18ec692cc61cb1677909c8d3fb1a4611ac59d9ac849be8c6af7d7d"
+        },
+        {
+          "id": "global.react-email-creation",
+          "kind": "skill",
+          "path": "skills/global/react-email-creation/skill.yaml",
+          "hash": "sha256-06f4054e2145d9b3be5951fc38c804618fcb34a3836318ee5bf7e7a31d732613"
+        },
+        {
+          "id": "global.renovate-aikido-checks",
+          "kind": "skill",
+          "path": "skills/global/renovate-aikido-checks/skill.yaml",
+          "hash": "sha256-48dc2bb5166189affc92a21ce315789cc82654cd1dff439be2dcab72323aff83"
+        },
+        {
+          "id": "global.research-prompts",
+          "kind": "skill",
+          "path": "skills/global/research-prompts/skill.yaml",
+          "hash": "sha256-970984d69d1d96eab852e95ae1aa7a678a23b161b6bfb7b26d78c2e8c5044f0a"
+        },
+        {
+          "id": "global.resend",
+          "kind": "skill",
+          "path": "skills/global/resend/skill.yaml",
+          "hash": "sha256-575f16c682f570f30caffb628e29421660221e8beef7c7158f2c5af2cf57cebe"
+        },
+        {
+          "id": "global.sanity",
+          "kind": "skill",
+          "path": "skills/global/sanity/skill.yaml",
+          "hash": "sha256-a60730c38ee07c1da5f6ea88afb9220399b0765ae9972a0af3b6d6acf1c46773"
+        },
+        {
+          "id": "global.setup-auth-oauth-google",
+          "kind": "skill",
+          "path": "skills/global/setup-auth-oauth-google/skill.yaml",
+          "hash": "sha256-1b1ead3caf25be112db4972a4aa68b52798163856a8c167ebf18e1b3ff9c5fcb"
+        },
+        {
+          "id": "global.start-project",
+          "kind": "skill",
+          "path": "skills/global/start-project/skill.yaml",
+          "hash": "sha256-8d5525056140f22d47f567d7d840a2b0ffc0f7d1b6da9c9ccc64c3953c3bca11"
+        },
+        {
+          "id": "global.stripe",
+          "kind": "skill",
+          "path": "skills/global/stripe/skill.yaml",
+          "hash": "sha256-805aeb827fbe21f170002630ee4650364cd1e050eaa659cdd1c6d97c2e27d8d8"
+        },
+        {
+          "id": "global.supabase-auth-template-update",
+          "kind": "skill",
+          "path": "skills/global/supabase-auth-template-update/skill.yaml",
+          "hash": "sha256-4e93d7ad725912085efd33bb38ea0edb21d0dfb48e1243a6d6cd9af094c89923"
+        },
+        {
+          "id": "global.supabase-init-start",
+          "kind": "skill",
+          "path": "skills/global/supabase-init-start/skill.yaml",
+          "hash": "sha256-caba1c07fff9296faaa6789a9c411f2853245e694b97eb0b69d4f47a62294a88"
+        },
+        {
+          "id": "global.ui-ux-review",
+          "kind": "skill",
+          "path": "skills/global/ui-ux-review/skill.yaml",
+          "hash": "sha256-1f8497f1a69e4d2e47ec5dafe4551d8b0eb11a2edfb381ae3bc9fb714c855e56"
+        },
+        {
+          "id": "global.user-facing-changelog",
+          "kind": "skill",
+          "path": "skills/global/user-facing-changelog/skill.yaml",
+          "hash": "sha256-0aeb4b46e72cef179fd15bc69401e05d94206d58e9286367ea43a4d3135e064a"
+        },
         {
           "id": "imported.deploy-to-vercel",
           "kind": "skill",
@@ -62,10 +248,22 @@
           "hash": "sha256-3c60960784feb599ece2d67042a9494af0e2d54dd25c7cb15db651a5e572e112"
         },
         {
+          "id": "imported.fallow",
+          "kind": "skill",
+          "path": "skills/imported/imported.fallow/skill.yaml",
+          "hash": "sha256-c7ed9769fc8938d92358de81eb94e6cff60e44a4d9d3f0452908fe616d7ebe02"
+        },
+        {
           "id": "imported.next-best-practices",
           "kind": "skill",
           "path": "skills/imported/imported.next-best-practices/skill.yaml",
           "hash": "sha256-3e347b3c1870c8ac4d8f5748ee9e82d245d7194ad33b54067e7c71e68faa72fa"
+        },
+        {
+          "id": "imported.seamless-feature-architecture",
+          "kind": "skill",
+          "path": "skills/imported/imported.seamless-feature-architecture/skill.yaml",
+          "hash": "sha256-933ea2e106ffbb30c4de0d3f8ddc3a504fa91646d92082bc37c76898b5fdc1d5"
         },
         {
           "id": "imported.shadcn-ui",

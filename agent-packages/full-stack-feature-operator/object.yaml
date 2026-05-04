@@ -27,6 +27,8 @@ metadata:
       - global.documentation-updates-drift
       - global.migration-handling
       - global.create-deployment-checklist
+      - imported.seamless-feature-architecture
+      - imported.fallow
       - imported.next-best-practices
     mcp_profile: profile.cursor-default
     mcp_servers:
@@ -34,6 +36,7 @@ metadata:
       - mcp.supabase
     cli_invocations:
       - turbo run typecheck --filter=<workspace>
+      - fallow audit <changed-scope>
       - gh pr checks --watch --required
       - supabase db reset
   usage: Use as a focused specialist agent package; resolve all referenced skills and tools before dispatch.
@@ -45,8 +48,11 @@ requires:
     - global.documentation-updates-drift
     - global.migration-handling
     - global.create-deployment-checklist
+    - imported.seamless-feature-architecture
+    - imported.fallow
     - imported.next-best-practices
   tools:
+    - cli.fallow
     - cli.turbo
     - cli.github
     - cli.supabase

@@ -1,0 +1,38 @@
+id: cli.fallow
+kind: cli-tool
+name: Fallow CLI
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: cli-tools/fallow/object.yaml
+description: Fallow CLI registry entry for JavaScript and TypeScript codebase intelligence.
+tags:
+  - cli
+  - fallow
+  - code-health
+capabilities:
+  - codebase-intelligence
+  - architecture-boundary-checks
+  - dead-code-analysis
+  - duplication-analysis
+metadata:
+  command: fallow
+  install: npm install -g fallow, npx fallow <command>, or cargo install fallow-cli.
+  docs: https://docs.fallow.tools
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: cli
+requires:
+  skills:
+    - imported.fallow
+  env: []
+entrypoints:
+  command: fallow
+risk:
+  level: medium
+  reasons:
+    - Read-only analysis is low risk, but fallow also exposes fix flows that can remove code or dependencies.
+  requires_human_review: true

@@ -16,12 +16,15 @@ description: Triage dependency updates and security findings from Renovate, Aiki
 3. Apply the domain checklist:
    - patch/minor/major, production/dev dependency, reachable/unreachable, exploitability, and ecosystem risk.
    - changelog, release notes, advisory, lockfile diff, and CI output.
+   - fallow evidence for unused, unlisted, test-only, or misplaced workspace dependencies before removal or reclassification.
    - ignore reason, scope, expiry, and compensating controls for suppressed findings.
 4. Make the smallest scoped change or checklist that satisfies the request.
 
 ## Tools And Sources
 - CLI: gh for PR/checks, turbo for targeted tests, npx renovate-config-validator for config.
+- CLI: fallow for dependency usage and dead-code evidence.
 - MCP: context7 for migration docs.
+- Skills: `imported.fallow` for exact fallow command rules.
 
 ## Validation
 - Record the exact command, browser check, docs review, or manual verification used.

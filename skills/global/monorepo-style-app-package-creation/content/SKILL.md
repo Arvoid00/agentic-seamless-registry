@@ -17,10 +17,13 @@ description: Create apps and packages that match pnpm/Turborepo monorepo convent
    - workspace globs, package naming conventions, shared tsconfig, lint/test scripts, and existing exports.
    - app vs shared package vs generated template vs existing module decision.
    - explicit package.json, exports, types, scripts, and dependency boundaries.
+   - shallow package/feature interfaces and fallow evidence for circular imports, duplicated modules, or boundary drift.
 4. Make the smallest scoped change or checklist that satisfies the request.
 
 ## Tools And Sources
 - CLI: pnpm filters, turbo affected/query, gh for PR context.
+- CLI: fallow for workspace boundary, duplication, dead-code, and dependency placement checks.
+- Skills: `imported.seamless-feature-architecture` for module shape and `imported.fallow` for exact fallow usage.
 
 ## Validation
 - Record the exact command, browser check, docs review, or manual verification used.

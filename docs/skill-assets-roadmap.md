@@ -17,7 +17,9 @@ This roadmap turns the skill map image into a concrete checklist for registry ob
 These imported skills already cover several items from the image and should not be recreated as local duplicates:
 
 - `imported.deploy-to-vercel`
+- `imported.fallow`
 - `imported.next-best-practices`
+- `imported.seamless-feature-architecture`
 - `imported.shadcn-ui`
 - `imported.supabase`
 - `imported.supabase-postgres-best-practices`
@@ -41,6 +43,7 @@ Cursor-managed and personal skills to reference as source material:
 - [x] `Stripe` -> `cli-tools/stripe/object.yaml`
 - [x] `Resend` -> `cli-tools/resend/object.yaml`
 - [x] `Databricks` -> `cli-tools/databricks/object.yaml`
+- [x] `Fallow` -> `cli-tools/fallow/object.yaml`
 
 ### MCP
 
@@ -52,7 +55,7 @@ Cursor-managed and personal skills to reference as source material:
 ### Global Skills
 
 - [x] `Start project` -> `skills/global/start-project/`
-- [x] `Feature builder` -> `skills/global/feature-builder/`
+- [x] `Feature builder` -> `skills/global/feature-builder/` plus `imported.seamless-feature-architecture`
 - [x] `Supabase` -> covered by `imported.supabase` and `imported.supabase-postgres-best-practices`
 - [x] `Copy writer` -> `skills/global/copy-writer/`
 - [x] `Pixel-perfect UI` -> `skills/global/pixel-perfect-ui/`
@@ -63,7 +66,7 @@ Cursor-managed and personal skills to reference as source material:
 - [x] `Documentation updates / drift` -> `skills/global/documentation-updates-drift/`
 - [x] `Front-end design` -> `skills/global/front-end-design/`
 - [x] `Research prompts` -> `skills/global/research-prompts/`
-- [x] `Code guidelines / ...` -> `skills/global/code-guidelines/`
+- [x] `Code guidelines / ...` -> `skills/global/code-guidelines/` plus `imported.fallow` and `imported.seamless-feature-architecture`
 - [x] `Migration handling` -> `skills/global/migration-handling/`
 - [x] `Renovate / Aikido checks` -> `skills/global/renovate-aikido-checks/`
 - [x] `Sanity` -> `skills/global/sanity/`

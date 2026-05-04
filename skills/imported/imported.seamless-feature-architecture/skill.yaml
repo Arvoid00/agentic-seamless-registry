@@ -1,0 +1,31 @@
+id: imported.seamless-feature-architecture
+kind: skill
+name: seamless-feature-architecture
+scope: external
+version: 0.1.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/seamless-feature-architecture/SKILL.md
+  imported_at: null
+description: Guides feature implementation architecture for TypeScript and Next.js projects. Use
+  when adding or refactoring features, routes, server actions, services, data access layers,
+  schemas, types, or modules; when the user asks for feature folders, lean routes, shallow
+  interfaces, small files, or architecture boundary checks; and before using fallow for structural
+  code health validation.
+tags:
+  - architecture
+  - feature
+  - imported
+  - seamless
+  - skill-md
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  frontmatter_metadata: {}
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/seamless-feature-architecture/SKILL.md
+  materialized_dir: skills/imported/imported.seamless-feature-architecture/content
+entrypoints:
+  prompt: skills/imported/imported.seamless-feature-architecture/content/SKILL.md

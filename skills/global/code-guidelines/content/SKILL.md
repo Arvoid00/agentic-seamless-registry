@@ -16,12 +16,16 @@ description: Capture and apply project coding standards for modularity, reuse, s
 3. Apply the domain checklist:
    - project rules, package structure, lint/test setup, and nearby implementation patterns.
    - local helpers, shared contracts, and existing UI/system primitives before new abstractions.
+   - feature folders, lean routes, service/data-access boundaries, shallow interfaces, and separate schema/type files.
+   - fallow evidence for dead code, duplicated logic, circular imports, complexity hotspots, and boundary violations.
    - actionable do/don't rules with examples only where they prevent ambiguity.
 4. Make the smallest scoped change or checklist that satisfies the request.
 
 ## Tools And Sources
 - CLI: turbo for scoped checks, gh for review context.
+- CLI: fallow for codebase health, duplication, dependency, and architecture-boundary evidence.
 - MCP: context7 for current framework guidance.
+- Skills: `imported.seamless-feature-architecture` for architecture shape and `imported.fallow` for exact fallow usage.
 
 ## Validation
 - Record the exact command, browser check, docs review, or manual verification used.

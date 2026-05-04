@@ -13,13 +13,20 @@ description: Capture and apply project coding standards for modularity, reuse, s
 tags:
   - standards
   - quality
+  - architecture
 capabilities:
   - coding-standards
+  - architecture-review
   - review-checklists
 metadata:
   source_format: SKILL.md
   roadmap: docs/skill-assets-roadmap.md
   image_lane: global-skills
-requires: {}
+requires:
+  skills:
+    - imported.seamless-feature-architecture
+    - imported.fallow
+  tools:
+    - cli.fallow
 entrypoints:
   prompt: skills/global/code-guidelines/content/SKILL.md

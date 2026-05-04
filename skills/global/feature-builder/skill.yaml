@@ -13,13 +13,20 @@ description: Break down and implement a feature through discovery, scoped edits,
 tags:
   - feature
   - implementation
+  - architecture
 capabilities:
   - feature-planning
+  - feature-architecture
   - validation
 metadata:
   source_format: SKILL.md
   roadmap: docs/skill-assets-roadmap.md
   image_lane: global-skills
-requires: {}
+requires:
+  skills:
+    - imported.seamless-feature-architecture
+    - imported.fallow
+  tools:
+    - cli.fallow
 entrypoints:
   prompt: skills/global/feature-builder/content/SKILL.md

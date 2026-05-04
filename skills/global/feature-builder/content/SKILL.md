@@ -15,13 +15,17 @@ description: Build or extend product functionality through discovery, scoped imp
 2. Review the relevant existing files, configuration, and registry assets.
 3. Apply the domain checklist:
    - affected routes, components, actions, schemas, env, and integrations.
+   - feature-folder boundaries, shallow public interfaces, service/data-access split, and small files.
+   - fallow evidence for new boundary, duplication, dead-code, or complexity issues when the change is structural.
    - smallest coherent code, test, doc, and config change.
    - reviewers for UI, migration, security, docs, or release risk.
 4. Make the smallest scoped change or checklist that satisfies the request.
 
 ## Tools And Sources
 - CLI: turbo for scoped validation, gh for issue/PR context, shadcn for component additions.
+- CLI: fallow for code health, architecture boundaries, dead code, and duplication checks.
 - MCP: context7 for current library APIs, supabase for database/auth evidence, figma or 21st-dev for UI.
+- Skills: `imported.seamless-feature-architecture` for module shape and `imported.fallow` for exact fallow command rules.
 
 ## Validation
 - Record the exact command, browser check, docs review, or manual verification used.
