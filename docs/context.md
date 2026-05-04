@@ -25,10 +25,10 @@
 - The default local MCP profile is `mcp/profiles/cursor-default.yaml`; it now explicitly includes the draft Figma, 21st Dev, Context7, and Supabase MCP registry entries created from the skill asset roadmap.
 - `../seamless-agent-os` is configured as an example filesystem source. Its Vercel-style skills live at `.agents/skills/<slug>/SKILL.md` and are pinned by `skills-lock.json`.
 - The filesystem adapter supports `mode: vercel-skills` / `ingest.skills_md` and normalizes those `SKILL.md` files into imported `skill` registry objects with upstream GitHub provenance where available.
-- The first `seamless-agent-os` ingest imported six skills: `deploy-to-vercel`, `next-best-practices`, `shadcn-ui`, `supabase`, `supabase-postgres-best-practices`, and `vercel-react-best-practices`.
+- The first `seamless-agent-os` ingest imported six skills; it now imports those six plus `fallow` and `seamless-feature-architecture`.
 - Imported registry objects use deterministic `source.imported_at: null`; ingest timestamps live in `registry.lock.json` so repeat ingests can skip unchanged objects cleanly.
 - Run `pnpm registry:materialize --source seamless-agent-os` after ingesting external `SKILL.md` sources to make imported skill entrypoints and sibling collateral self-contained under `skills/imported/<id>/content/`.
-- The latest materialize run copied 133 files across the six imported skills. Re-running `ingest` after materialization skips unchanged objects because the filesystem adapter now detects existing `content/SKILL.md` files and emits local entrypoints.
+- The latest materialize run copied 137 files across eight imported skills. Re-running `ingest` after materialization skips unchanged objects because the filesystem adapter now detects existing `content/SKILL.md` files and emits local entrypoints.
 
 ## Next Useful Extensions
 

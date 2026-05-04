@@ -10,7 +10,7 @@
     "seamless-agent-os": {
       "type": "filesystem",
       "path": "../seamless-agent-os",
-      "last_ingested_at": "2026-05-04T09:11:12.292Z",
+      "last_ingested_at": "2026-05-04T09:16:45.649Z",
       "objects": [
         {
           "id": "imported.deploy-to-vercel",
@@ -22,7 +22,7 @@
           "id": "imported.fallow",
           "kind": "skill",
           "path": "skills/imported/imported.fallow/skill.yaml",
-          "hash": "sha256-f4387893a02e3f4615e33f68d081649daeeb2c40f28b20648ed85bc7412a04b9"
+          "hash": "sha256-c7ed9769fc8938d92358de81eb94e6cff60e44a4d9d3f0452908fe616d7ebe02"
         },
         {
           "id": "imported.next-best-practices",
@@ -34,7 +34,7 @@
           "id": "imported.seamless-feature-architecture",
           "kind": "skill",
           "path": "skills/imported/imported.seamless-feature-architecture/skill.yaml",
-          "hash": "sha256-274625d968775e641a0226900b4880a5f69e94d82dab15ef969268116db0c377"
+          "hash": "sha256-933ea2e106ffbb30c4de0d3f8ddc3a504fa91646d92082bc37c76898b5fdc1d5"
         },
         {
           "id": "imported.shadcn-ui",
