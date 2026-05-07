@@ -1,0 +1,35 @@
+id: imported.improve-codebase-architecture
+kind: skill
+name: improve-codebase-architecture
+scope: external
+version: 0.1.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/improve-codebase-architecture/SKILL.md
+  upstream_url: https://github.com/mattpocock/skills
+  imported_at: null
+description: Find deepening opportunities in a codebase, informed by the domain language in
+  CONTEXT.md and the decisions in docs/adr/. Use when the user wants to improve architecture, find
+  refactoring opportunities, consolidate tightly-coupled modules, or make a codebase more testable
+  and AI-navigable.
+tags:
+  - architecture
+  - codebase
+  - github
+  - imported
+  - improve
+  - skill-md
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  upstream_source: mattpocock/skills
+  upstream_source_type: github
+  upstream_hash: c77b86b4332919499608f9af1880074e1fec65a59b95c70c27a9f39cd137865e
+  frontmatter_metadata: {}
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/improve-codebase-architecture/SKILL.md
+  materialized_dir: skills/imported/imported.improve-codebase-architecture/content
+entrypoints:
+  prompt: skills/imported/imported.improve-codebase-architecture/content/SKILL.md

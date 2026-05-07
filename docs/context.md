@@ -47,3 +47,4 @@
 - Local skill entrypoints were trimmed again to remove repeated guardrail/validation boilerplate; each now keeps only trigger scope, domain checklist, relevant tools, validation, references, and output.
 - The `seamless-agent-os` source now imports `imported.fallow` and `imported.seamless-feature-architecture`; local feature/code/monorepo/dependency skills reference them instead of duplicating imported skill instructions.
 - `cli.fallow` is the local registry object for Fallow CLI usage, with human review required for fix flows because read-only analysis and write-capable cleanup share the same tool.
+- The registry CLI now installs project-visible skill folders into any target repo with `pnpm run registry:skills:add --target <repo>`, preserving target `skills-lock.json` protections.

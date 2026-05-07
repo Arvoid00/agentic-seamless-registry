@@ -8,6 +8,7 @@ import { ingestCommand } from "../commands/ingest.js";
 import { initCommand } from "../commands/init.js";
 import { listCommand } from "../commands/list.js";
 import { materializeCommand } from "../commands/materialize.js";
+import { skillsAddCommand } from "../commands/skills-add.js";
 import { validateCommand } from "../commands/validate.js";
 import { workflowCommand } from "../commands/workflow.js";
 
@@ -29,6 +30,16 @@ program.command("validate").description("Validate canonical registry objects.").
 program.command("index").description("Generate agent-facing registry indexes.").action(() => run(() => indexCommand(rootDir)));
 
 program.command("list").description("List registry objects by kind.").argument("<kind>", "skills | mcp").action((kind: string) => run(() => listCommand(rootDir, kind)));
+
+const skillsCommand = program.command("skills").description("Install or manage registry skills in target repositories.");
+
+skillsCommand
+  .command("add")
+  .description("Copy registry skills into a target repository.")
+  .requiredOption("--target <path>", "Target repository root")
+  .option("--skills-dir <path>", "Skill directory inside the target repository", ".agents/skills")
+  .option("--dry-run", "Validate and report without writing files")
+  .action((options: { target: string; skillsDir?: string; dryRun?: boolean }) => run(() => skillsAddCommand(rootDir, options)));
 
 program
   .command("workflow")

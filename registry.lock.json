@@ -10,7 +10,7 @@
     "seamless-agent-os": {
       "type": "filesystem",
       "path": "../seamless-agent-os",
-      "last_ingested_at": "2026-05-04T09:16:45.649Z",
+      "last_ingested_at": "2026-05-07T10:40:15.979Z",
       "objects": [
         {
           "id": "imported.deploy-to-vercel",
@@ -23,6 +23,18 @@
           "kind": "skill",
           "path": "skills/imported/imported.fallow/skill.yaml",
           "hash": "sha256-c7ed9769fc8938d92358de81eb94e6cff60e44a4d9d3f0452908fe616d7ebe02"
+        },
+        {
+          "id": "imported.grill-me",
+          "kind": "skill",
+          "path": "skills/imported/imported.grill-me/skill.yaml",
+          "hash": "sha256-90c462e8383caa464c93a82fdd4c601f4572b1ed6485c53b22f4c71521d69e25"
+        },
+        {
+          "id": "imported.improve-codebase-architecture",
+          "kind": "skill",
+          "path": "skills/imported/imported.improve-codebase-architecture/skill.yaml",
+          "hash": "sha256-da558bd1c2f3470ad5eacbe88c09d117c623177da800f2b31b346f0b41de5a2f"
         },
         {
           "id": "imported.next-best-practices",

@@ -1,0 +1,33 @@
+id: imported.grill-me
+kind: skill
+name: grill-me
+scope: external
+version: 0.1.0
+status: active
+source:
+  origin: imported
+  source_id: seamless-agent-os
+  source_path: ../seamless-agent-os/.agents/skills/grill-me/SKILL.md
+  upstream_url: https://github.com/mattpocock/skills
+  imported_at: null
+description: Interview the user relentlessly about a plan or design until reaching shared
+  understanding, resolving each branch of the decision tree. Use when user wants to stress-test a
+  plan, get grilled on their design, or mentions "grill me".
+tags:
+  - github
+  - grill
+  - imported
+  - me
+  - skill-md
+capabilities: []
+metadata:
+  source_format: SKILL.md
+  upstream_source: mattpocock/skills
+  upstream_source_type: github
+  upstream_hash: 784f0dbb7403b0f00324bce9a112f715342777a0daee7bbb7385f9c6f0a170ea
+  frontmatter_metadata: {}
+  materialized: true
+  materialized_from: ../seamless-agent-os/.agents/skills/grill-me/SKILL.md
+  materialized_dir: skills/imported/imported.grill-me/content
+entrypoints:
+  prompt: skills/imported/imported.grill-me/content/SKILL.md
