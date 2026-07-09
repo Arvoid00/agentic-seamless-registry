@@ -1,0 +1,58 @@
+name: Publish skills
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "skills/**"
+      - "src/**"
+      - ".github/workflows/publish-skills.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: publish-skills
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout registry
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate registry
+        run: pnpm registry:validate
+
+      - name: Export skills repo artifact
+        run: pnpm registry:export --target skills-repo
+
+      - name: Publish to Seamless-Agency/skills
+        env:
+          SKILLS_PUBLISH_TOKEN: ${{ secrets.SKILLS_PUBLISH_TOKEN }}
+        run: |
+          git clone "https://x-access-token:${SKILLS_PUBLISH_TOKEN}@github.com/Seamless-Agency/skills.git" publish-repo
+          rsync -a --delete --exclude .git dist/export/skills-repo/ publish-repo/
+          cd publish-repo
+          git config user.name "seamless-registry-bot"
+          git config user.email "registry@seamless.agency"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+            exit 0
+          fi
+          git commit -m "Sync skills from agentic-seamless-registry ${GITHUB_SHA}"
+          git push origin main

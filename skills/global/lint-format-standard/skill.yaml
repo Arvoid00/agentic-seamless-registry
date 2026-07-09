@@ -1,0 +1,32 @@
+id: global.lint-format-standard
+kind: skill
+name: Lint Format Standard
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/lint-format-standard/skill.yaml
+description: Enforce the Seamless ESLint + Prettier + TypeScript configuration standard. Use when
+  setting up lint/format/typecheck tooling in a repo, auditing a repo against the standard, or
+  reviewing changes to eslint.config.*, tsconfig, .prettierrc, or package.json scripts.
+tags:
+  - eslint
+  - prettier
+  - typescript
+  - standards
+capabilities:
+  - lint-config-audit
+  - typescript-config
+  - required-scripts
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires:
+  skills:
+    - global.code-guidelines
+entrypoints:
+  prompt: skills/global/lint-format-standard/content/SKILL.md

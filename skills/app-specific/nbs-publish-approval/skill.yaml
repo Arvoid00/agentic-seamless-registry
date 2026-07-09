@@ -1,0 +1,31 @@
+id: app-specific.nbs-publish-approval
+kind: skill
+name: NbS Publish Approval
+scope: app-specific
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/app-specific/nbs-publish-approval/skill.yaml
+description: Work on the Mee(r)Makers content publish approval workflow — publish requests, reviewer
+  RPCs, database-trigger enforcement. Use when changing how blog posts, events, press releases,
+  milestones, or resources become public, when adding a new publishable content type, or when
+  debugging a 42501 "Publiceren vereist..." error or a scheduled post that never went live.
+tags:
+  - pwn-nbs-community
+  - supabase
+  - approval-workflow
+  - editorial
+capabilities:
+  - publish-request-lifecycle
+  - trigger-enforcement
+  - content-type-extension
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: app-specific-skills
+requires: {}
+entrypoints:
+  prompt: skills/app-specific/nbs-publish-approval/content/SKILL.md

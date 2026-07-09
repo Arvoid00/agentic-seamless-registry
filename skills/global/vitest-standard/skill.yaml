@@ -1,0 +1,27 @@
+id: global.vitest-standard
+kind: skill
+name: Vitest Standard
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/vitest-standard/skill.yaml
+description: Fleet standard for unit/integration testing with Vitest — runner, test layout, naming,
+  required coverage, and the no-services rule.
+tags:
+  - testing
+  - vitest
+  - standards
+capabilities:
+  - unit-test-authoring
+  - test-lane-review
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/vitest-standard/content/SKILL.md

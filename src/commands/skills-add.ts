@@ -1,12 +1,24 @@
 import { cp, lstat, readdir, readFile, realpath, rm } from "node:fs/promises";
 import { extname, isAbsolute, join, relative, resolve } from "node:path";
+import { z } from "zod";
 import { ensureDir, pathExists, resolveFromRoot } from "../utils/fs.js";
 
 export interface SkillsAddOptions {
   target: string;
   skillsDir?: string;
   dryRun?: boolean;
+  scope?: string[];
 }
+
+export const SKILLS_MANIFEST_FILE = "skills-manifest.json";
+
+export const skillsManifestSchema = z.object({
+  version: z.literal(1),
+  include: z.array(z.string().min(1)).default([]),
+  exclude: z.array(z.string().min(1)).default([]),
+});
+
+export type SkillsManifest = z.infer<typeof skillsManifestSchema>;
 
 interface RegistrySkill {
   category: string;
@@ -18,6 +30,8 @@ interface RegistrySkill {
 interface SkillsAddResult {
   copied: string[];
   skipped: string[];
+  filteredOut: string[];
+  filterSources: string[];
   registrySkills: number;
   targetSkillsDir: string;
 }
@@ -30,6 +44,15 @@ export async function skillsAddCommand(rootDir: string, options: SkillsAddOption
   const result = await addSkillsToTarget(rootDir, options);
   console.log(`Registry skills: ${result.registrySkills}`);
   console.log(`Target skills dir: ${relative(rootDir, result.targetSkillsDir)}`);
+  if (result.filterSources.length === 0) {
+    console.log(`No ${SKILLS_MANIFEST_FILE} in target; installing all registry skills. Add one to filter per-target skills.`);
+  } else {
+    console.log(
+      `Filtered out: ${result.filteredOut.length} via ${result.filterSources.join(" + ")}${
+        options.dryRun && result.filteredOut.length ? ` (${result.filteredOut.join(", ")})` : ""
+      }`,
+    );
+  }
   console.log(
     `Copied or refreshed: ${result.copied.length}${result.copied.length ? ` (${result.copied.join(", ")})` : ""}`,
   );
@@ -49,6 +72,31 @@ async function addSkillsToTarget(rootDir: string, options: SkillsAddOptions): Pr
   assertPathInside(skillsRoot, realTargetRoot, "--skills-dir must stay inside the target repository.");
   const lockedSkillNames = await readLockedSkillNames(join(targetRoot, "skills-lock.json"));
   const registrySkills = await readRegistrySkills(rootDir);
+  const manifest = await readSkillsManifest(join(targetRoot, SKILLS_MANIFEST_FILE));
+  const scopes = parseScopes(options.scope, registrySkills);
+  const filterSources: string[] = [];
+  if (manifest) filterSources.push(SKILLS_MANIFEST_FILE);
+  if (scopes) filterSources.push(`--scope ${[...scopes].join(",")}`);
+
+  const selected: RegistrySkill[] = [];
+  const filteredOut: string[] = [];
+  for (const skill of registrySkills) {
+    const skillId = `${skill.category}/${skill.name}`;
+    const allowedByManifest = !manifest || manifestAllows(manifest, skillId);
+    const allowedByScope = !scopes || scopes.has(skill.category);
+    if (allowedByManifest && allowedByScope) {
+      selected.push(skill);
+    } else {
+      filteredOut.push(skillId);
+    }
+  }
+
+  if (selected.length === 0) {
+    console.warn(
+      `Warning: 0 of ${registrySkills.length} registry skills selected (${filterSources.join(" + ") || "no filters"}); nothing will be installed. Note that '*' does not cross '/', so a bare '*' matches nothing — use 'global/*'.`,
+    );
+  }
+
   const seen = new Set<string>();
   const copied: string[] = [];
   const skipped: string[] = [];
@@ -57,7 +105,7 @@ async function addSkillsToTarget(rootDir: string, options: SkillsAddOptions): Pr
     await ensureDir(skillsRoot);
   }
 
-  for (const skill of registrySkills) {
+  for (const skill of selected) {
     if (seen.has(skill.name)) {
       throw new Error(`Duplicate registry skill name '${skill.name}' from ${skill.relativeContentDir}`);
     }
@@ -85,7 +133,7 @@ async function addSkillsToTarget(rootDir: string, options: SkillsAddOptions): Pr
       await cp(skill.contentDir, destination, {
         recursive: true,
         dereference: false,
-        filter: shouldCopy,
+        filter: shouldCopySkillFile,
       });
     }
     copied.push(skill.name);
@@ -93,7 +141,7 @@ async function addSkillsToTarget(rootDir: string, options: SkillsAddOptions): Pr
 
   if (!options.dryRun) {
     const missing = [];
-    for (const skill of registrySkills) {
+    for (const skill of selected) {
       if (!(await pathExists(join(skillsRoot, skill.name, "SKILL.md")))) {
         missing.push(skill.name);
       }
@@ -107,9 +155,62 @@ async function addSkillsToTarget(rootDir: string, options: SkillsAddOptions): Pr
   return {
     copied,
     skipped,
+    filteredOut,
+    filterSources,
     registrySkills: registrySkills.length,
     targetSkillsDir: skillsRoot,
   };
+}
+
+async function readSkillsManifest(manifestPath: string): Promise<SkillsManifest | undefined> {
+  if (!(await pathExists(manifestPath))) return undefined;
+
+  let raw: unknown;
+  try {
+    raw = JSON.parse(await readFile(manifestPath, "utf8"));
+  } catch (error) {
+    throw new Error(`Malformed ${SKILLS_MANIFEST_FILE} (invalid JSON): ${error instanceof Error ? error.message : error}`);
+  }
+
+  const parsed = skillsManifestSchema.safeParse(raw);
+  if (!parsed.success) {
+    const issues = parsed.error.issues.map((issue) => `${issue.path.join(".") || "<root>"}: ${issue.message}`);
+    throw new Error(`Invalid ${SKILLS_MANIFEST_FILE}: ${issues.join("; ")}`);
+  }
+
+  return parsed.data;
+}
+
+function manifestAllows(manifest: SkillsManifest, skillId: string): boolean {
+  if (manifest.exclude.some((pattern) => patternToRegExp(pattern).test(skillId))) return false;
+  if (manifest.include.length === 0) return true;
+  return manifest.include.some((pattern) => patternToRegExp(pattern).test(skillId));
+}
+
+function patternToRegExp(pattern: string): RegExp {
+  const escaped = pattern.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^/]*");
+  return new RegExp(`^${escaped}$`);
+}
+
+function parseScopes(scopeOptions: string[] | undefined, registrySkills: RegistrySkill[]): Set<string> | undefined {
+  const scopes = (scopeOptions ?? [])
+    .flatMap((value) => value.split(","))
+    .map((value) => value.trim())
+    .filter(Boolean);
+  if (scopes.length === 0) {
+    if ((scopeOptions ?? []).length > 0) {
+      throw new Error("Empty --scope value. Pass a scope name, e.g. --scope global");
+    }
+    return undefined;
+  }
+
+  const knownScopes = new Set(registrySkills.map((skill) => skill.category));
+  const unknown = scopes.filter((scope) => !knownScopes.has(scope));
+  if (unknown.length > 0) {
+    throw new Error(`Unknown --scope value(s): ${unknown.join(", ")}. Known scopes: ${[...knownScopes].sort().join(", ")}`);
+  }
+
+  return new Set(scopes);
 }
 
 async function readRegistrySkills(rootDir: string): Promise<RegistrySkill[]> {
@@ -181,7 +282,7 @@ async function readDirIfExists(path: string) {
   }
 }
 
-async function shouldCopy(source: string): Promise<boolean> {
+export async function shouldCopySkillFile(source: string): Promise<boolean> {
   const name = source.split(/[\\/]/).at(-1) ?? source;
   if (name === ".DS_Store" || name === ".git" || name === "node_modules") return false;
   if (name === ".env" || name.startsWith(".env.")) return false;

@@ -1,0 +1,30 @@
+id: global.playwright-standard
+kind: skill
+name: Playwright Standard
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/playwright-standard/skill.yaml
+description: Fleet standard for end-to-end testing with Playwright — setup against local Supabase,
+  synthetic seed data only, spec layout, and specialized security/evidence lanes.
+tags:
+  - testing
+  - playwright
+  - e2e
+  - standards
+capabilities:
+  - e2e-environment-setup
+  - e2e-lane-review
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires:
+  skills:
+    - global.e2e-create-run
+entrypoints:
+  prompt: skills/global/playwright-standard/content/SKILL.md

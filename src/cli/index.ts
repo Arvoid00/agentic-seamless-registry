@@ -38,8 +38,9 @@ skillsCommand
   .description("Copy registry skills into a target repository.")
   .requiredOption("--target <path>", "Target repository root")
   .option("--skills-dir <path>", "Skill directory inside the target repository", ".agents/skills")
+  .option("--scope <scope>", "Only install skills from these scopes (repeat or comma-separate); composes with the target's skills-manifest.json", collectValues, [])
   .option("--dry-run", "Validate and report without writing files")
-  .action((options: { target: string; skillsDir?: string; dryRun?: boolean }) => run(() => skillsAddCommand(rootDir, options)));
+  .action((options: { target: string; skillsDir?: string; scope?: string[]; dryRun?: boolean }) => run(() => skillsAddCommand(rootDir, options)));
 
 program
   .command("workflow")

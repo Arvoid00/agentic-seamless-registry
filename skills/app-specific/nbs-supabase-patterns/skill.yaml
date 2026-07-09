@@ -1,0 +1,32 @@
+id: app-specific.nbs-supabase-patterns
+kind: skill
+name: NbS Supabase Patterns
+scope: app-specific
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/app-specific/nbs-supabase-patterns/skill.yaml
+description: Apply this repo's Supabase conventions — migrations, RLS policy shapes, trigger
+  enforcement, RPC style, local stack, typegen. Use when writing a migration or RLS policy in
+  PWN-NBS-Community, adding a Postgres function/RPC, starting local Supabase, regenerating database
+  types, or debugging a PGRST116 "Cannot coerce" error.
+tags:
+  - pwn-nbs-community
+  - supabase
+  - migrations
+  - rls
+capabilities:
+  - migration-authoring
+  - rls-policies
+  - rpc-conventions
+  - local-supabase
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: app-specific-skills
+requires: {}
+entrypoints:
+  prompt: skills/app-specific/nbs-supabase-patterns/content/SKILL.md

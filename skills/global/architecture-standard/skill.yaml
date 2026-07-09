@@ -1,0 +1,34 @@
+id: global.architecture-standard
+kind: skill
+name: Architecture Standard
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/architecture-standard/skill.yaml
+description: Enforce Seamless architecture rules - deep modules behind shallow interfaces, feature
+  folders with thin routes, pnpm/Turborepo monorepo layout, package boundaries. Use when reviewing
+  code structure, planning a feature or package, or auditing architecture boundaries.
+tags:
+  - standards
+  - architecture
+  - monorepo
+capabilities:
+  - architecture-review
+  - boundary-audit
+  - monorepo-layout
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires:
+  skills:
+    - imported.improve-codebase-architecture
+    - imported.seamless-feature-architecture
+    - global.monorepo-style-app-package-creation
+    - imported.fallow
+entrypoints:
+  prompt: skills/global/architecture-standard/content/SKILL.md

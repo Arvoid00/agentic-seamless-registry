@@ -1,0 +1,29 @@
+id: app-specific.h2ohub-feature-modules
+kind: skill
+name: H2OHub Feature Modules
+scope: app-specific
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/app-specific/h2ohub-feature-modules/skill.yaml
+description: Add or extend data access in h2ohub-next via feature modules under features/<domain>/.
+  Use when creating a feature module, adding a query/mutation/hook, wiring TanStack Query
+  prefetching, or when a Supabase call is about to land inline in a component or route.
+tags:
+  - app-specific
+  - h2ohub
+  - data-access
+  - tanstack-query
+capabilities:
+  - feature-module-scaffolding
+  - query-cache-design
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: app-specific-skills
+requires: {}
+entrypoints:
+  prompt: skills/app-specific/h2ohub-feature-modules/content/SKILL.md

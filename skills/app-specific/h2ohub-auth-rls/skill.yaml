@@ -1,0 +1,29 @@
+id: app-specific.h2ohub-auth-rls
+kind: skill
+name: H2OHub Auth And RLS
+scope: app-specific
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/app-specific/h2ohub-auth-rls/skill.yaml
+description: Apply h2ohub-next's authorization model — one layout auth gate, RLS as the boundary,
+  explicit checks only around the admin client. Use when touching protected routes, permission
+  checks, RLS policies, tenant views, or any service-role/admin client code.
+tags:
+  - app-specific
+  - h2ohub
+  - auth
+  - rls
+capabilities:
+  - authorization-review
+  - rls-policy-design
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: app-specific-skills
+requires: {}
+entrypoints:
+  prompt: skills/app-specific/h2ohub-auth-rls/content/SKILL.md

@@ -1,0 +1,34 @@
+id: global.design-system-standard
+kind: skill
+name: Design System Standard
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/design-system-standard/skill.yaml
+description: Enforceable Seamless design standard — shadcn/ui on Radix with Tailwind v4, a shared
+  packages/ui, the Seamless design register, and review gates.
+tags:
+  - standards
+  - design-system
+  - ui
+capabilities:
+  - design-baseline-audit
+  - review-gating
+  - design-register
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires:
+  skills:
+    - global.front-end-design
+    - global.pixel-perfect-ui
+    - global.ui-ux-review
+    - global.metadata-favicons
+    - imported.shadcn-ui
+entrypoints:
+  prompt: skills/global/design-system-standard/content/SKILL.md

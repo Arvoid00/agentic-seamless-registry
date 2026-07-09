@@ -1,0 +1,27 @@
+id: global.seamless-skill-standard
+kind: skill
+name: Seamless Skill Standard
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/seamless-skill-standard/skill.yaml
+description: Author or edit a skill to the Seamless canonical format, covering placement, frontmatter,
+  body sections, and installation.
+tags:
+  - skills
+  - authoring
+  - standards
+capabilities:
+  - skill-authoring
+  - skill-review
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires: {}
+entrypoints:
+  prompt: skills/global/seamless-skill-standard/content/SKILL.md

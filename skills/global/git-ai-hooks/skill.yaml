@@ -1,0 +1,33 @@
+id: global.git-ai-hooks
+kind: skill
+name: Git AI Hooks
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/git-ai-hooks/skill.yaml
+description: Enforce the Seamless git pre-commit and Claude Code hook standard. Use when adding
+  pre-commit hooks to a repo, wiring lint-staged or typecheck into commits, configuring
+  .claude/settings.json hooks for post-edit lint, or auditing a repo's hook setup.
+tags:
+  - git
+  - hooks
+  - claude-code
+  - standards
+capabilities:
+  - pre-commit-hooks
+  - claude-code-hooks
+  - hook-audit
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires:
+  skills:
+    - global.create-commit
+    - global.lint-format-standard
+entrypoints:
+  prompt: skills/global/git-ai-hooks/content/SKILL.md

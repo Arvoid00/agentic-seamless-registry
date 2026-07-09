@@ -1,0 +1,31 @@
+id: app-specific.nbs-dutch-content
+kind: skill
+name: NbS Dutch Content
+scope: app-specific
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/app-specific/nbs-dutch-content/skill.yaml
+description: Write Dutch user-facing copy for the Mee(r)Makers platform in the correct brand voice
+  and terminology. Use when adding or reviewing UI labels, error messages, emails, CTAs, or page
+  copy in PWN-NBS-Community, when naming a new route or content surface, or when another skill
+  needs the brand glossary.
+tags:
+  - pwn-nbs-community
+  - dutch
+  - copywriting
+  - brand-voice
+capabilities:
+  - brand-glossary
+  - tone-of-voice
+  - dutch-copy-review
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: app-specific-skills
+requires: {}
+entrypoints:
+  prompt: skills/app-specific/nbs-dutch-content/content/SKILL.md

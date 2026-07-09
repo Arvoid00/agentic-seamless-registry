@@ -1,0 +1,30 @@
+id: app-specific.h2ohub-react-compiler
+kind: skill
+name: H2OHub React Compiler Discipline
+scope: app-specific
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/app-specific/h2ohub-react-compiler/skill.yaml
+description: Keep h2ohub-next client components compilable by the React Compiler (reactCompiler
+  enabled). Use when writing or modifying client components, handling try/catch or loading-state
+  cleanup, tempted to add useMemo/useCallback, or triaging react-hooks/todo or
+  preserve-manual-memoization ESLint diagnostics.
+tags:
+  - app-specific
+  - h2ohub
+  - react-compiler
+  - eslint
+capabilities:
+  - compiler-pattern-compliance
+  - lint-triage
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: app-specific-skills
+requires: {}
+entrypoints:
+  prompt: skills/app-specific/h2ohub-react-compiler/content/SKILL.md

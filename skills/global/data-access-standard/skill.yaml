@@ -1,0 +1,35 @@
+id: global.data-access-standard
+kind: skill
+name: Data Access Standard
+scope: global
+version: 0.1.0
+status: active
+source:
+  origin: local
+  source_id: seamless-local-skills
+  imported_at: null
+  source_path: skills/global/data-access-standard/skill.yaml
+description: Enforce the fleet data access rules - feature modules own all queries/mutations/hooks,
+  no inline DB calls in components or routes, tiered Supabase clients, Drizzle only in sessionless
+  services, generated DB types. Use when writing or reviewing any code that reads or writes the
+  database.
+tags:
+  - standards
+  - data-access
+  - supabase
+  - tanstack-query
+capabilities:
+  - data-layer-review
+  - client-tier-selection
+  - query-cache-wiring
+metadata:
+  source_format: SKILL.md
+  roadmap: docs/skill-assets-roadmap.md
+  image_lane: global-skills
+requires:
+  skills:
+    - imported.seamless-feature-architecture
+    - imported.supabase
+    - global.architecture-standard
+entrypoints:
+  prompt: skills/global/data-access-standard/content/SKILL.md
